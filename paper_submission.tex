@@ -43,7 +43,7 @@ $^{1}$Yunnan University, School of Information Science and Engineering \\
 
 %% ---- ABSTRACT ----
 \begin{abstract}
-Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (\wzero), cautious prompting (\wone), simulated retrieval writing (\wtwo), and verify-and-repair (\wthree). Using DeepSeek-chat and Qwen3-14B across 30~AI-related research questions in both English and Chinese, we generated 240 related-work paragraphs, extracted 1,974 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1\% (DeepSeek) and 16.4\% (Qwen3) of generated references can be verified as existing scholarly works, revealing substantial cross-model differences. Contrary to expectations, the simulated retrieval condition performed worst with 52.5\% verified and an estimated 31\% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13\% but increased the proportion of references without DOIs to 27.0\%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
+Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (\wzero), cautious prompting (\wone), simulated retrieval writing (\wtwo), and verify-and-repair (\wthree). Using DeepSeek-chat and Qwen3-14B across 30~AI-related research questions in both English and Chinese, we generated 240 related-work paragraphs, extracted 1,974 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1\% (DeepSeek) and 16.4\% (Qwen3) of generated references can be verified as existing scholarly works, revealing substantial cross-model differences. Contrary to expectations, the simulated retrieval condition performed worst (52.5\% verified, estimated 31\% hallucination rate for DeepSeek). Cautious prompting reduced likely hallucinated references to approximately 13\% (DeepSeek) but increased the proportion of references without DOIs to 27.0\% (DeepSeek). Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, with the ranking of workflow effectiveness (verify-and-repair $>$ direct $>$ cautious $>$ simulated retrieval) consistent across models, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
 \end{abstract}
 
 \noindent\textbf{Keywords}: large language models, citation hallucination, academic writing, retrieval-augmented generation, verifiability
@@ -175,7 +175,7 @@ For deep hallucination analysis, we randomly sampled 30 unresolved DOI reference
 
 We extracted 950 references from 120 generated paragraphs. Of these, 763 (80.3\%) contained a DOI, while 187 (19.7\%) did not. After verifying against Crossref, OpenAlex, and arXiv APIs, 561 references (59.1\%) were confirmed as existing works (resolved). Deep sample analysis of 60 references estimated 363 references (38.2\%) are likely hallucinated (E1). Only 26 references (2.7\%) remain uncertain.
 
-\subsection{Per-Workflow Comparison}
+\subsection{DeepSeek Per-Workflow Results}
 
 \begin{table}[ht]
 \centering
@@ -231,7 +231,7 @@ Chinese prompts showed consistently lower verifiability across most conditions, 
 
 %% ---- DISCUSSION ----
 \subsection{Uncertainty Quantification}
-\subsection{Uncertainty Quantification}
+
 
 We computed Wilson 95\% confidence intervals for the resolved rate of each workflow.
 The intervals confirm that the observed differences between workflows are statistically meaningful:
@@ -388,6 +388,9 @@ Adds: ``You will be given a list of retrieved candidate papers. Write the relate
 
 \paragraph{Workflow \wthree\ (Verify-and-Repair)}
 Adds: ``The references will later be automatically verified, so use only real and verifiable references. Do not invent any metadata.''
+
+
+Chinese prompt variants follow the same structure with Chinese-translated research questions. Identical prompts were used for both DeepSeek-chat and Qwen3-14B.
 
 \section{Model Configuration}
 
