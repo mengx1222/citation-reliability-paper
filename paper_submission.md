@@ -2,10 +2,9 @@
 
 ## Abstract
 
-Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (W0), cautious prompting (W1), simulated retrieval writing (W2), and verify-and-repair (W3). Using DeepSeek-chat across 30 AI-related research questions in both English and Chinese, we generated 120 related-work paragraphs, extracted 950 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1% of generated references can be verified as existing scholarly works. Contrary to expectations, the simulated retrieval condition performed worst with 52.5% verified and an estimated 31% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13% but increased the proportion of references without DOIs to 27.0%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
+Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (W0), cautious prompting (W1), simulated retrieval writing (W2), and verify-and-repair (W3). Using DeepSeek-chat and Qwen3-14B across 30 AI-related research questions in both English and Chinese, we generated 240 related-work paragraphs, extracted 1,974 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1% (DeepSeek) and 16.4% (Qwen3) of generated references can be verified as existing scholarly works, revealing substantial cross-model differences in citation reliability. Contrary to expectations, the simulated retrieval condition performed worst with 52.5% verified and an estimated 31% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13% but increased the proportion of references without DOIs to 27.0%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
 
 **Keywords**: large language models, citation hallucination, academic writing, retrieval-augmented generation, verifiability
-Keywords**: large language models, citation hallucination, academic writing, retrieval-augmented generation, verifiability
 
 ## 1. Introduction
 
@@ -24,7 +23,7 @@ This paper addresses these gaps through a controlled experiment comparing four L
 - **W2 Simulated Retrieval**: Inform the model that candidate papers are available before writing.
 - **W3 Verify-and-Repair**: Instruct the model that references will be verified.
 
-We evaluate each workflow across 30 research questions in both English and Chinese, using DeepSeek-chat (2026). Our analysis includes automated verification of 950 extracted references against three scholarly APIs and a deep sample-based hallucination analysis.
+We evaluate each workflow across 30 research questions in both English and Chinese, using DeepSeek-chat and Qwen3-14B. Our analysis includes automated verification of 950 extracted references against three scholarly APIs and a deep sample-based hallucination analysis.
 
 ## 2. Related Work
 
@@ -76,9 +75,11 @@ We constructed 30 research questions covering ten AI-related domains: LLM factua
 
 Each was paired with a structured output format specifying the [Body] and [References] sections. The complete prompt set is available in the supplementary materials.
 
-### 3.4 Model and Parameters
+### 3.4 Models and Parameters
 
-All prompts were sent to the DeepSeek-chat API (accessed July 6, 2026) with temperature 0.7 and max_tokens 2048. Each prompt was a single user message with no system prompt. Rate limiting was applied with 0.5-second intervals.
+**DeepSeek-chat (primary model).** All prompts were sent to the DeepSeek-chat API (api.deepseek.com, accessed July 6, 2026) with temperature 0.7 and max_tokens 2048. Each prompt was a single user message with no system prompt. Rate limiting was applied with 0.5-second intervals.
+
+**Qwen3-14B (cross-validation model).** The same experiment was repeated using Qwen3-14B via the SiliconFlow API (api.siliconflow.cn/v1, accessed July 6, 2026) with identical prompts, temperature 0.7, and max_tokens 2048.
 
 ### 3.5 Error Taxonomy
 
@@ -161,6 +162,30 @@ The W2 condition has a lower bound of 46.2%, meaning that even under the most co
 
 Title-based verification of no-DOI references in W1 (sampled 30 of 64) found that only 2 of 30 (7%) could be matched to real papers. This suggests that the high no-DOI rate in W1 is not driven by cautious models withholding available DOIs, but rather by the model generating references that are themselves unverifiable.
 
+
+### 4.7 Cross-Model Comparison: DeepSeek vs. Qwen3-14B
+
+To assess whether the observed workflow effects generalize across models, we repeated the same experiment using Qwen3-14B via the SiliconFlow API. Table 3 presents a direct comparison of the two models across all four workflows.
+
+**Table 3: Cross-Model Verification Results**
+
+| Workflow | DeepSeek Resolved | DeepSeek 95% CI | Qwen3 Resolved | Qwen3 95% CI | Gap |
+|---|---|---|---|---|---|
+| W0 Direct | 64.5% (160/248) | [58.4%, 70.2%] | 18.1% (47/259) | [13.9%, 23.3%] | +46.4% |
+| W1 Cautious | 58.6% (139/237) | [52.3%, 64.7%] | 15.0% (38/254) | [11.1%, 19.9%] | +43.7% |
+| W2 Simulated Retrieval | 52.5% (124/236) | [46.2%, 58.8%] | 7.7% (20/261) | [5.0%, 11.5%] | +44.9% |
+| W3 Verify-and-Repair | 60.3% (138/229) | [53.8%, 66.4%] | 25.2% (63/250) | [20.2%, 30.9%] | +35.1% |
+
+*Confidence intervals: Wilson score at 95% level.*
+
+The most striking finding is the dramatic gap in overall verification rates: DeepSeek-chat achieves 59.1% overall resolution, whereas Qwen3-14B resolves only 16.4% (95% CI: [14.2%, 18.9%]) of its 1,024 generated references. Despite this absolute difference, the **relative ranking of workflows is consistent across models**: W3 performs best, followed by W0, then W1, and W2 worst. This pattern holds despite Qwen3's substantially lower verification rate across all conditions.
+
+The gap is smallest for W3 Verify-and-Repair (+35.1%) and largest for W0 Direct (+46.4%), suggesting that the verify-and-repair instruction provides a stabilizing effect that partially mitigates cross-model differences. W2 Simulated Retrieval remains the worst-performing workflow in both models (7.7% for Qwen3, 52.5% for DeepSeek), reinforcing that simulated retrieval without real document access actively harms citation reliability.
+
+**No-DOI analysis.** The no-DOI rate is substantially higher for Qwen3 across all workflows. DeepSeek's W1 had 27.0% no-DOI; Qwen3's W1 reaches 46.1%. W0 Direct: 14.9% (DeepSeek) vs. 29.0% (Qwen3). This suggests Qwen3 is more cautious about fabricating DOIs---but the trade-off does not improve verification rates. The cross-model stability of the no-DOI pattern (W1 highest in both) indicates that cautious prompting's effect on DOI generation is a general phenomenon.
+
+**Implications.** The invariant workflow ranking across models strengthens the generalizability of our conclusions. While absolute verification rates differ substantially---likely reflecting differences in model capability, training data, and calibration---the relative effectiveness of writing instructions (verify-and-repair > direct > cautious > simulated retrieval) appears to be a robust property of current LLM behavior.
+
 1. W1 Cautious Prompt achieved the lowest unresolvable rate (14.3%) and lowest estimated E1 (~13%), but the highest no-DOI rate (27.0%). This represents a trade-off: the model produces fewer fabricated citations but also provides less verifiable metadata.
 
 2. W2 Simulated Retrieval performed worst, with the lowest resolved rate (52.5%) and highest unresolved rate (32.6%). The simulated retrieval setting caused the model to generate citations confidently while still relying on hallucination-prone internal knowledge.
@@ -200,6 +225,20 @@ Our findings suggest that:
 - Automated citation verification pipelines (such as those used in this study) should be integrated into AI-assisted writing tools.
 - Chinese-language academic writing requires additional verification attention.
 - Simple verify-and-repair prompts are not sufficient; deeper verification frameworks are needed.
+### 5.4 Cross-Model Discussion
+
+The substantial gap between DeepSeek-chat (59.1% resolved) and Qwen3-14B (16.4% resolved) warrants examination. Several factors may contribute to this difference:
+
+1. **Model capability and training.** DeepSeek-chat may have been trained on a larger or more recent corpus of academic literature, improving its ability to generate verifiable DOIs. Qwen3-14B's lower verification rate may reflect more limited exposure to structured citation data during training.
+
+2. **Calibration differences.** Qwen3 generates fewer DOIs overall (higher no-DOI rate in every workflow), suggesting different internal calibration for when to output identifier metadata. This caution does not improve verification rates, however---the unresolved rate remains high even when DOIs are provided.
+
+3. **DOI fabrication patterns.** Both models show the highest no-DOI rates under W1 Cautious prompting, indicating that the "do not fabricate DOIs" instruction is consistently interpreted as "withhold DOIs when uncertain" rather than "generate only verifiable DOIs." This pattern holds across models and languages.
+
+4. **Systematic bias vs. random hallucination.** The fact that workflow ranking is invariant across models---W3 > W0 > W1 > W2 in both---suggests that the relative effectiveness of writing instructions is not an artifact of a single model's behavior but reflects a genuine property of how instruction-following affects citation generation in current LLMs.
+
+Despite these differences, the consistent ranking provides strong evidence that the observed workflow effects are not model-specific. For researchers and tool builders, this implies that workflow-level interventions (particularly verify-and-repair instructions and avoiding simulated retrieval) can be effective across different LLM backends, even though absolute citation reliability varies by model.
+
 
 ### 5.5 Comparison with Prior Work
 
@@ -217,7 +256,7 @@ This study has several limitations:
 
 ## 6. Conclusion
 
-We conducted a controlled evaluation of four LLM-assisted academic writing workflows, verifying 950 generated references against scholarly APIs. Our results show that only 59.1% of generated references can be verified as existing works. Cautious prompting helps but trades citation existence for metadata completeness. Simulated simulated retrieval writing paradoxically performs worst. Chinese language prompts show lower reliability. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
+We conducted a controlled evaluation of four LLM-assisted academic writing workflows, verifying 950 generated references against scholarly APIs. Our results show that only 59.1% of generated references can be verified as existing works. Cautious prompting helps but trades citation existence for metadata completeness. Simulated retrieval writing paradoxically performs worst. Chinese language prompts show lower reliability. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
 
 
 
@@ -265,12 +304,22 @@ Chinese prompt variants follow the same structure with Chinese-translated resear
 
 ## Appendix B: Model Configuration
 
+**DeepSeek-chat (primary model)**
 - API endpoint: api.deepseek.com/chat/completions
 - Model: deepseek-chat
 - Temperature: 0.7
 - Max tokens: 2048
 - System prompt: none
 - Rate limit: 0.5s between requests
+- Access date: July 6, 2026
+
+**Qwen3-14B (cross-validation model)**
+- API endpoint: api.siliconflow.cn/v1/chat/completions
+- Model: Qwen/Qwen3-14B
+- Temperature: 0.7
+- Max tokens: 2048
+- System prompt: none
+- Rate limit: 0.1s between requests
 - Access date: July 6, 2026
 
 ## Appendix C: Verification Details

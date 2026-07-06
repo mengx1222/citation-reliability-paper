@@ -12,9 +12,9 @@
 
 This workspace contains a complete empirical study evaluating citation reliability in LLM-assisted academic writing.
 
-- **Model**: DeepSeek-chat
-- **Task**: 30 research questions × 4 workflows × 2 languages = 120 paragraphs
-- **Extracted references**: 950
+- **Models**: DeepSeek-chat (primary), Qwen3-14B (cross-validation)
+- **Task**: 30 research questions × 4 workflows × 2 languages × 2 models = 240 paragraphs
+- **Extracted references**: 1,974 (950 DeepSeek + 1,024 Qwen3)
 - **Verified against**: Crossref, OpenAlex, arXiv APIs
 
 ### Key Results
@@ -24,7 +24,7 @@ This workspace contains a complete empirical study evaluating citation reliabili
 | Verified genuine | 561/950 (59.1%) |
 | Estimated hallucinated (E1) | ~363/950 (38.2%) |
 | Best workflow | W1 Cautious Prompt (E1 ~13%) |
-| Worst workflow | W2 Retrieval-first (E1 ~31%) |
+| Worst workflow | W2 Simulated Retrieval (E1 ~31%) |
 | Language gap | English 62.4% vs Chinese 55.5% resolved |
 
 ### Repository Structure
@@ -66,9 +66,9 @@ Manuscript prepared for submission. Target venues: *Applied Intelligence* / arXi
 
 本研究对大语言模型辅助学术写作中的引用可靠性进行了受控实证评估。
 
-- **模型**: DeepSeek-chat
-- **任务**: 30个研究问题 × 4种工作流 × 2种语言 = 120段输出
-- **提取引用**: 950条
+- **模型**: DeepSeek-chat (主模型), Qwen3-14B (交叉验证)
+- **任务**: 30个研究问题 × 4种工作流 × 2种语言 × 2个模型 = 240段输出
+- **提取引用**: 1,974条 (950条 DeepSeek + 1,024条 Qwen3)
 - **核验来源**: Crossref、OpenAlex、arXiv API
 
 ### 核心结果
@@ -78,7 +78,7 @@ Manuscript prepared for submission. Target venues: *Applied Intelligence* / arXi
 | 验证为真实 | 561/950 (59.1%) |
 | 估算幻觉引用 (E1) | ~363/950 (38.2%) |
 | 最佳工作流 | W1 谨慎提示 (E1 ~13%) |
-| 最差工作流 | W2 检索优先 (E1 ~31%) |
+| 最差工作流 | W2 模拟检索 (E1 ~31%) |
 | 语言差异 | 英文 62.4% vs 中文 55.5% resolved |
 
 ### 仓库结构

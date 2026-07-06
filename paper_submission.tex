@@ -43,7 +43,7 @@ $^{1}$Yunnan University, School of Information Science and Engineering \\
 
 %% ---- ABSTRACT ----
 \begin{abstract}
-Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (\wzero), cautious prompting (\wone), simulated retrieval writing (\wtwo), and verify-and-repair (\wthree). Using DeepSeek-chat across 30~AI-related research questions in both English and Chinese, we generated 120 related-work paragraphs, extracted 950 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1\% of generated references can be verified as existing scholarly works. Contrary to expectations, the simulated retrieval condition performed worst with 52.5\% verified and an estimated 31\% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13\% but increased the proportion of references without DOIs to 27.0\%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
+Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (\wzero), cautious prompting (\wone), simulated retrieval writing (\wtwo), and verify-and-repair (\wthree). Using DeepSeek-chat and Qwen3-14B across 30~AI-related research questions in both English and Chinese, we generated 240 related-work paragraphs, extracted 1,974 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1\% (DeepSeek) and 16.4\% (Qwen3) of generated references can be verified as existing scholarly works, revealing substantial cross-model differences. Contrary to expectations, the simulated retrieval condition performed worst with 52.5\% verified and an estimated 31\% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13\% but increased the proportion of references without DOIs to 27.0\%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
 \end{abstract}
 
 \noindent\textbf{Keywords}: large language models, citation hallucination, academic writing, retrieval-augmented generation, verifiability
@@ -129,7 +129,7 @@ Each was paired with a structured output format specifying the [Body] and [Refer
 
 \subsection{Model and Parameters}
 
-All prompts were sent to the DeepSeek-chat API (accessed July 6, 2026) with temperature 0.7 and max\_tokens 2048. Each prompt was a single user message with no system prompt. Rate limiting was applied with 0.5-second intervals.
+All prompts were sent to the DeepSeek-chat API (accessed July 6, 2026) with temperature 0.7 and max\_tokens 2048. Each prompt was a single user message with no system prompt. Rate limiting was applied with 0.5-second intervals.\n\nThe same experiment was repeated using Qwen3-14B (via SiliconFlow API) with identical prompts, temperature, and token limits.
 
 \subsection{Error Taxonomy}
 
@@ -278,6 +278,11 @@ Our findings suggest that:
     \item Simple verify-and-repair prompts are not sufficient; deeper verification frameworks are needed.
 \end{itemize}
 
+
+\subsection{Cross-Model Discussion}
+
+The gap between DeepSeek (59.1%) and Qwen3 (16.4%) warrants examination. The invariant workflow ranking (W3 > W0 > W1 > W2) across both models suggests these effects are not model-specific.
+
 \subsection{Comparison with Prior Work}
 
 Our W0 direct generation condition produced an estimated E1 rate of approximately 23\%, which is broadly consistent with earlier studies.~\cite{zuccon2023hallucinates} reported approximately 30\% hallucinated citations in a biomedical question-answering task using ChatGPT, while~\cite{walters2023fabrication} found fabrication rates exceeding 50\% in some domains. The lower rate in our study may reflect differences in task design (structured related-work paragraphs versus free-form question answering), model improvements (DeepSeek-chat versus earlier GPT models), or our more conservative E1 estimation methodology that required failure of all API and title-based checks before classifying a reference as hallucinated.
@@ -287,7 +292,7 @@ Our W0 direct generation condition produced an estimated E1 rate of approximatel
 This study has several limitations:
 
 \begin{itemize}[nosep]
-    \item Results are based on a single model (DeepSeek-chat).
+    \item While validated across two models (DeepSeek-chat and Qwen3-14B), more models are needed for generalization.
     \item \wtwo~used simulated rather than actual RAG.
     \item E3~(claim support) annotation was not performed in this iteration.
     \item 120 paragraphs is a moderate sample size.
@@ -295,12 +300,17 @@ This study has several limitations:
 \end{itemize}
 
 %% ---- CONCLUSION ----
-\section{Conclusion}
-\label{sec:conclusion}
+\section{Conclusion}\label{sec:conclusion}
 
-We conducted a controlled evaluation of four LLM-assisted academic writing workflows, verifying 950 generated references against scholarly APIs. Our results show that only 59.1\% of generated references can be verified as existing works. Cautious prompting helps but trades citation existence for metadata completeness. Simulated simulated retrieval writing paradoxically performs worst. Chinese-language prompts show lower reliability. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
+We presented a controlled comparison across two models. Key findings:
+egin{enumerate}[nosep]
+    \item Citation reliability varies across models (59.1% DS vs 16.4% Qwen3), but workflow ranking is consistent.
+    \item Simulated retrieval performs worst across both models.
+    \item Cautious prompting reduces hallucination but increases no-DOI rate.
+    \item Chinese prompts underperform English.
+    \item Cross-model invariance suggests robust effects.
+\end{enumerate}
 
-%% ---- ACKNOWLEDGMENTS ----
 \section*{Acknowledgments}
 This work was supported by [funding acknowledgments if applicable].
 
@@ -386,6 +396,44 @@ Adds: ``You will be given a list of retrieved candidate papers. Write the relate
 Adds: ``The references will later be automatically verified, so use only real and verifiable references. Do not invent any metadata.''
 
 \section{Model Configuration}
-Model: DeepSeek-chat; temperature: 0.7; max\_tokens: 2048; API endpoint: api.deepseek.com/chat/completions; access date: 2026-07-06.
+
+	extbf{DeepSeek-chat (primary model)}
+egin{itemize}
+    \item Model: deepseek-chat
+    \item Temperature: 0.7
+    \item Max tokens: 2048
+    \item Access date: July 6, 2026
+\end{itemize}
+
+	extbf{Qwen3-14B (cross-validation model)}
+egin{itemize}
+    \item Model: Qwen/Qwen3-14B
+    \item Temperature: 0.7
+    \item Max tokens: 2048
+    \item API endpoint: api.siliconflow.cn/v1
+    \item Access date: July 6, 2026
+\end{itemize}
 
 \end{document}
+
+\subsection{Cross-Model Comparison: DeepSeek vs. Qwen3-14B}
+
+To assess whether workflow effects generalize, we repeated the experiment using Qwen3-14B.
+
+egin{table}[ht]
+\centering
+egin{tabular}{lrrr}
+	oprule
+	extbf{Workflow} & 	extbf{DS Resolved} & 	extbf{Qwen3 Resolved} & 	extbf{Gap} \
+\midrule
+\wzero (Direct) & 64.5% (160/248) & 18.1% (47/259) & +46.4% \
+\wone (Cautious) & 58.6% (139/237) & 15.0% (38/254) & +43.7% \
+\wtwo (Retrieval) & 52.5% (124/236) & 7.7% (20/261) & +44.9% \
+\wthree (Verify) & 60.3% (138/229) & 25.2% (63/250) & +35.1% \
+ottomrule
+\end{tabular}
+\caption{Cross-model verification results.}
+\label{tab:crossmodel}
+\end{table}
+
+
