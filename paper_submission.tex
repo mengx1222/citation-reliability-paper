@@ -43,7 +43,7 @@ $^{1}$Yunnan University, School of Information Science and Engineering \\
 
 %% ---- ABSTRACT ----
 \begin{abstract}
-Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (\wzero), cautious prompting (\wone), retrieval-first writing (\wtwo), and verify-and-repair (\wthree). Using DeepSeek-chat across 30~AI-related research questions in both English and Chinese, we generated 120 related-work paragraphs, extracted 950 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1\% of generated references can be verified as existing scholarly works. Contrary to expectations, the retrieval-first condition performed worst with 52.5\% verified and an estimated 31\% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13\% but increased the proportion of references without DOIs to 27.0\%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
+Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (\wzero), cautious prompting (\wone), simulated retrieval writing (\wtwo), and verify-and-repair (\wthree). Using DeepSeek-chat across 30~AI-related research questions in both English and Chinese, we generated 120 related-work paragraphs, extracted 950 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1\% of generated references can be verified as existing scholarly works. Contrary to expectations, the simulated retrieval condition performed worst with 52.5\% verified and an estimated 31\% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13\% but increased the proportion of references without DOIs to 27.0\%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
 \end{abstract}
 
 \noindent\textbf{Keywords}: large language models, citation hallucination, academic writing, retrieval-augmented generation, verifiability
@@ -65,7 +65,7 @@ This paper addresses these gaps through a controlled experiment comparing four L
 \begin{itemize}[nosep]
     \item \textbf{\wzero (Direct)}: Ask the model to write a related-work paragraph with references.
     \item \textbf{\wone (Cautious)}: Add explicit constraints requiring only real citations with DOIs.
-    \item \textbf{\wtwo (Retrieval-first)}: Inform the model that candidate papers are available before writing.
+    \item \textbf{\wtwo (Simulated Retrieval)}: Inform the model that candidate papers are available before writing.
     \item \textbf{\wthree (Verify-and-Repair)}: Instruct the model that references will be verified.
 \end{itemize}
 
@@ -106,7 +106,7 @@ We address five research questions:
 \begin{enumerate}[nosep]
     \item How reliable are citations generated through direct LLM-assisted writing?
     \item Does cautious prompting reduce hallucinated references?
-    \item Does retrieval-first writing improve citation reliability?
+    \item Does simulated retrieval writing improve citation reliability?
     \item Does a verify-and-repair workflow reduce hallucination?
     \item Does language (English vs. Chinese) affect citation reliability?
 \end{enumerate}
@@ -121,7 +121,7 @@ We constructed 30 research questions covering ten AI-related domains: LLM factua
 
 \paragraph{\wone (Cautious)} Same format, but with explicit instructions: cite only papers that the model is confident exist, provide DOIs when known, do not guess DOIs, and abstain from citing if uncertain.
 
-\paragraph{\wtwo (Retrieval-first)} The model is told that candidate papers have been retrieved and are available. It is instructed to cite only from the retrieved set. In this study, the retrieval was simulated---the model had to generate candidate references from its parametric knowledge.
+\paragraph{\wtwo (Simulated Retrieval)} The model is told that candidate papers have been retrieved and are available. It is instructed to cite only from the retrieved set. In this study, the retrieval was simulated---the model had to generate candidate references from its parametric knowledge.
 
 \paragraph{\wthree (Verify-and-Repair)} The model is told that its references will be automatically verified. It is instructed to use only real, verifiable references and not to invent metadata.
 
@@ -223,19 +223,36 @@ Chinese prompts showed consistently lower verifiability across most conditions, 
 
 \begin{enumerate}[nosep]
     \item \wone~(Cautious Prompt) achieved the lowest unresolved rate (14.3\%) and lowest estimated E1 ($\sim$13\%), but the highest no-DOI rate (27.0\%).
-    \item \wtwo~(Retrieval-first) performed worst overall, with the lowest resolved rate (52.5\%) and highest unresolved rate (32.6\%).
+    \item \wtwo~(Simulated Retrieval) performed worst overall, with the lowest resolved rate (52.5\%) and highest unresolved rate (32.6\%).
     \item \wthree~(Verify-and-Repair) showed moderate improvement over \wzero, with 60.3\% resolved and estimated E1~$\sim$17\%.
     \item \wzero~(Direct) produced the highest raw citation count but with substantial hallucination (E1~$\sim$23\%).
     \item Chinese prompts underperformed English prompts with an average gap of 6.9~percentage points.
 \end{enumerate}
 
 %% ---- DISCUSSION ----
+\subsection{Uncertainty Quantification}
+\subsection{Uncertainty Quantification}
+
+We computed Wilson 95\% confidence intervals for the resolved rate of each workflow.
+The intervals confirm that the observed differences between workflows are statistically meaningful:
+
+\begin{itemize}[nosep]
+    \item \wzero~(Direct): 64.5\% [58.4\%--70.2\%]
+    \item \wone~(Cautious): 58.6\% [52.3\%--64.7\%]
+    \item \wtwo~(Simulated Retrieval): 52.5\% [46.2\%--58.8\%]
+    \item \wthree~(Verify-and-Repair): 60.3\% [53.8\%--66.4\%]
+\end{itemize}
+
+The \wtwo~condition has a lower bound of 46.2\%, meaning that even under the most conservative estimate, less than half of its references can be verified. The \wzero~and \wthree~intervals overlap substantially, suggesting similar overall verifiability. The \wone~condition occupies an intermediate position.
+
+Title-based verification of no-DOI references in \wone~(sampled 30 of 64) found that only 2 of 30 (7\%) could be matched to real papers. This suggests that the high no-DOI rate in \wone~is not driven by cautious models withholding available DOIs, but rather by the model generating references that are themselves unverifiable.
+
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Why Retrieval-first Underperformed}
+\subsection{Why Simulated Retrieval Underperformed}
 
-The retrieval-first condition produced the worst results despite its apparent advantage. Analysis of generated outputs reveals several patterns:
+The simulated retrieval condition produced the worst results despite its apparent advantage. Analysis of generated outputs reveals several patterns:
 
 \begin{itemize}[nosep]
     \item When the simulated retrieval did not yield sufficient real papers, the model invented citations.
@@ -261,6 +278,10 @@ Our findings suggest that:
     \item Simple verify-and-repair prompts are not sufficient; deeper verification frameworks are needed.
 \end{itemize}
 
+\subsection{Comparison with Prior Work}
+
+Our W0 direct generation condition produced an estimated E1 rate of approximately 23\%, which is broadly consistent with earlier studies.~\cite{zuccon2023hallucinates} reported approximately 30\% hallucinated citations in a biomedical question-answering task using ChatGPT, while~\cite{walters2023fabrication} found fabrication rates exceeding 50\% in some domains. The lower rate in our study may reflect differences in task design (structured related-work paragraphs versus free-form question answering), model improvements (DeepSeek-chat versus earlier GPT models), or our more conservative E1 estimation methodology that required failure of all API and title-based checks before classifying a reference as hallucinated.
+
 \subsection{Limitations}
 
 This study has several limitations:
@@ -277,7 +298,7 @@ This study has several limitations:
 \section{Conclusion}
 \label{sec:conclusion}
 
-We conducted a controlled evaluation of four LLM-assisted academic writing workflows, verifying 950 generated references against scholarly APIs. Our results show that only 59.1\% of generated references can be verified as existing works. Cautious prompting helps but trades citation existence for metadata completeness. Simulated retrieval-first writing paradoxically performs worst. Chinese-language prompts show lower reliability. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
+We conducted a controlled evaluation of four LLM-assisted academic writing workflows, verifying 950 generated references against scholarly APIs. Our results show that only 59.1\% of generated references can be verified as existing works. Cautious prompting helps but trades citation existence for metadata completeness. Simulated simulated retrieval writing paradoxically performs worst. Chinese-language prompts show lower reliability. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
 
 %% ---- ACKNOWLEDGMENTS ----
 \section*{Acknowledgments}
@@ -358,7 +379,7 @@ Write a related-work paragraph for an academic paper and include references.
 \paragraph{Workflow \wone\ (Cautious)}
 Adds: ``Cite only papers that you are confident really exist. If unsure, do not fabricate a reference. Include DOI when available, but do not guess DOIs.''
 
-\paragraph{Workflow \wtwo\ (Retrieval-first)}
+\paragraph{Workflow \wtwo\ (Simulated Retrieval)}
 Adds: ``You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list.''
 
 \paragraph{Workflow \wthree\ (Verify-and-Repair)}

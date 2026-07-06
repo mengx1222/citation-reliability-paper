@@ -1,0 +1,23 @@
+## Python dependencies for citation-reliability paper
+## Install: pip install -r requirements.txt
+
+# Core
+python>=3.10
+
+# API verification (standard library only for initial pipeline)
+# urllib, json, csv, re, xml, concurrent.futures - all stdlib
+
+# Statistical analysis (for Wilson CI etc.)
+scipy>=1.10
+numpy>=1.24
+
+# Data processing
+pandas>=2.0
+
+# Visualization (for paper figures)
+matplotlib>=3.7
+seaborn>=0.12
+
+# Reproducibility
+jupyter>=1.0
+notebook>=7.0
