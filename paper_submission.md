@@ -161,22 +161,9 @@ Title-based verification of no-DOI references in W1 (sampled 30 of 64) found tha
 
 **Key findings for DeepSeek-chat**:
 
-1. W1 Cautious Prompt achieved the lowest unresolved rate (14.3%) and lowest estimated E1 (~13%), but the highest no-DOI rate (27.0%). This represents a trade-off: the model produces fewer fabricated citations but also provides less verifiable metadata.
+1. W1 Cautious Prompt achieved the lowest unresolved rate (14.3%) 
 
-2. W2 Simulated Retrieval performed worst, with the lowest resolved rate (52.5%) and highest unresolved rate (32.6%). The simulated retrieval setting caused the model to generate citations confidently while still relying on hallucination-prone internal knowledge.
-
-3. W3 Verify-and-Repair showed moderate improvement over W0, with 60.3% resolved and E1 ~17%, suggesting simple prompt-level instructions have limited effect.
-
-4. W0 Direct produced the highest raw citation count but with substantial hallucination (E1 ~23%).
-
-5. Chinese prompts underperformed English prompts with an average gap of 6.9 percentage points.
-
-### 4.6 Uncertainty Quantification
-
-
-
-
-### 4.7 Cross-Model Comparison: DeepSeek vs. Qwen3-14B
+### 4.6 Cross-Model Comparison: DeepSeek vs. Qwen3-14B
 
 To assess whether the observed workflow effects generalize across models, we repeated the same experiment using Qwen3-14B via the SiliconFlow API. Table 3 presents a direct comparison of the two models across all four workflows.
 
@@ -198,17 +185,6 @@ The gap is smallest for W3 Verify-and-Repair (+35.1%) and largest for W0 Direct 
 **No-DOI analysis.** The no-DOI rate is substantially higher for Qwen3 across all workflows. DeepSeek's W1 had 27.0% no-DOI; Qwen3's W1 reaches 46.1%. W0 Direct: 14.9% (DeepSeek) vs. 29.0% (Qwen3). This suggests Qwen3 is more cautious about fabricating DOIs---but the trade-off does not improve verification rates. The cross-model stability of the no-DOI pattern (W1 highest in both) indicates that cautious prompting's effect on DOI generation is a general phenomenon.
 
 **Implications.** The invariant workflow ranking across models strengthens the generalizability of our conclusions. While absolute verification rates differ substantially---likely reflecting differences in model capability, training data, and calibration---the relative effectiveness of writing instructions (verify-and-repair > direct > cautious > simulated retrieval) appears to be a robust property of current LLM behavior.
-
-and lowest estimated E1 (~13%), but the highest no-DOI rate (27.0%). This represents a trade-off: the model produces fewer fabricated citations but also provides less verifiable metadata.
-
-2. W2 Simulated Retrieval performed worst, with the lowest resolved rate (52.5%) and highest unresolved rate (32.6%). The simulated retrieval setting caused the model to generate citations confidently while still relying on hallucination-prone internal knowledge.
-
-3. W3 Verify-and-Repair showed moderate improvement over W0, with 60.3% resolved and E1 ~17%, suggesting simple prompt-level instructions have limited effect.
-
-4. W0 Direct produced the highest raw citation count but with substantial hallucination (E1 ~23%).
-
-5. Chinese prompts underperformed English prompts with an average gap of 6.9 percentage points.
-
 ## 5. Discussion
 
 ### 5.1 Why Simulated Retrieval Underperformed

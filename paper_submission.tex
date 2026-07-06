@@ -247,6 +247,29 @@ The \wtwo~condition has a lower bound of 46.2\%, meaning that even under the mos
 
 Title-based verification of no-DOI references in \wone~(sampled 30 of 64) found that only 2 of 30 (7\%) could be matched to real papers. This suggests that the high no-DOI rate in \wone~is not driven by cautious models withholding available DOIs, but rather by the model generating references that are themselves unverifiable.
 
+
+\subsection{Cross-Model Comparison: DeepSeek vs. Qwen3-14B}
+
+To assess whether workflow effects generalize, we repeated the experiment using Qwen3-14B.
+
+egin{table}[ht]
+\centering
+egin{tabular}{lrrr}
+	oprule
+	extbf{Workflow} & 	extbf{DS Resolved} & 	extbf{Qwen3 Resolved} & 	extbf{Gap} \
+\midrule
+\wzero (Direct) & 64.5% (160/248) & 18.1% (47/259) & +46.4% \
+\wone (Cautious) & 58.6% (139/237) & 15.0% (38/254) & +43.7% \
+\wtwo (Retrieval) & 52.5% (124/236) & 7.7% (20/261) & +44.9% \
+\wthree (Verify) & 60.3% (138/229) & 25.2% (63/250) & +35.1% \
+ottomrule
+\end{tabular}
+\caption{Cross-model verification results.}
+\label{tab:crossmodel}
+\end{table}
+
+
+
 \section{Discussion}
 \label{sec:discussion}
 
@@ -412,25 +435,4 @@ Chinese prompt variants follow the same structure with Chinese-translated resear
 \end{itemize}
 
 \end{document}
-
-\subsection{Cross-Model Comparison: DeepSeek vs. Qwen3-14B}
-
-To assess whether workflow effects generalize, we repeated the experiment using Qwen3-14B.
-
-egin{table}[ht]
-\centering
-egin{tabular}{lrrr}
-	oprule
-	extbf{Workflow} & 	extbf{DS Resolved} & 	extbf{Qwen3 Resolved} & 	extbf{Gap} \
-\midrule
-\wzero (Direct) & 64.5% (160/248) & 18.1% (47/259) & +46.4% \
-\wone (Cautious) & 58.6% (139/237) & 15.0% (38/254) & +43.7% \
-\wtwo (Retrieval) & 52.5% (124/236) & 7.7% (20/261) & +44.9% \
-\wthree (Verify) & 60.3% (138/229) & 25.2% (63/250) & +35.1% \
-ottomrule
-\end{tabular}
-\caption{Cross-model verification results.}
-\label{tab:crossmodel}
-\end{table}
-
 
