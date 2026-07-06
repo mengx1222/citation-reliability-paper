@@ -232,7 +232,7 @@ The substantial gap between DeepSeek-chat (59.1% resolved) and Qwen3-14B (16.4% 
 
 3. **DOI fabrication patterns.** Both models show the highest no-DOI rates under W1 Cautious prompting, indicating that the "do not fabricate DOIs" instruction is consistently interpreted as "withhold DOIs when uncertain" rather than "generate only verifiable DOIs." This pattern holds across models and languages.
 
-4. **Systematic bias vs. random hallucination.** The fact that workflow ranking is invariant across models---W3 > W0 > W1 > W2 in both---suggests that the relative effectiveness of writing instructions is not an artifact of a single model's behavior but reflects a genuine property of how instruction-following affects citation generation in current LLMs.
+4. **Systematic bias vs. random hallucination.** The fact that workflow ranking is invariant across models---with W3 and W0 as the top two workflows, followed by W1 and W2 in both---suggests that the relative effectiveness of writing instructions is not an artifact of a single model's behavior but reflects a genuine property of how instruction-following affects citation generation in current LLMs.
 
 Despite these differences, the consistent ranking provides strong evidence that the observed workflow effects are not model-specific. For researchers and tool builders, this implies that workflow-level interventions (particularly verify-and-repair instructions and avoiding simulated retrieval) can be effective across different LLM backends, even though absolute citation reliability varies by model.
 
