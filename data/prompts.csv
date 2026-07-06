@@ -1,0 +1,1291 @@
+prompt_id,task_id,domain,language,workflow,research_question,prompt
+T001_W0_DIRECT,T001,LLM factuality,en,W0_DIRECT,How reliable are large language models when asked to provide scholarly citations for academic writing?,"Research question: How reliable are large language models when asked to provide scholarly citations for academic writing?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T001_W1_CAUTIOUS,T001,LLM factuality,en,W1_CAUTIOUS,How reliable are large language models when asked to provide scholarly citations for academic writing?,"Research question: How reliable are large language models when asked to provide scholarly citations for academic writing?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T001_W2_RETRIEVAL_FIRST,T001,LLM factuality,en,W2_RETRIEVAL_FIRST,How reliable are large language models when asked to provide scholarly citations for academic writing?,"Research question: How reliable are large language models when asked to provide scholarly citations for academic writing?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T001_W3_VERIFY_REPAIR,T001,LLM factuality,en,W3_VERIFY_REPAIR,How reliable are large language models when asked to provide scholarly citations for academic writing?,"Research question: How reliable are large language models when asked to provide scholarly citations for academic writing?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T002_W0_DIRECT,T002,LLM factuality,zh,W0_DIRECT,大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？,"研究问题：大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T002_W1_CAUTIOUS,T002,LLM factuality,zh,W1_CAUTIOUS,大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？,"研究问题：大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T002_W2_RETRIEVAL_FIRST,T002,LLM factuality,zh,W2_RETRIEVAL_FIRST,大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？,"研究问题：大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T002_W3_VERIFY_REPAIR,T002,LLM factuality,zh,W3_VERIFY_REPAIR,大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？,"研究问题：大语言模型在生成学术综述段落时容易出现哪些类型的引用错误？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T003_W0_DIRECT,T003,RAG,en,W0_DIRECT,Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?,"Research question: Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T003_W1_CAUTIOUS,T003,RAG,en,W1_CAUTIOUS,Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?,"Research question: Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T003_W2_RETRIEVAL_FIRST,T003,RAG,en,W2_RETRIEVAL_FIRST,Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?,"Research question: Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T003_W3_VERIFY_REPAIR,T003,RAG,en,W3_VERIFY_REPAIR,Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?,"Research question: Does retrieval-augmented generation reduce hallucinated citations in academic writing tasks?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T004_W0_DIRECT,T004,RAG,zh,W0_DIRECT,检索增强生成能否减少学术写作中的虚假引用？,"研究问题：检索增强生成能否减少学术写作中的虚假引用？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T004_W1_CAUTIOUS,T004,RAG,zh,W1_CAUTIOUS,检索增强生成能否减少学术写作中的虚假引用？,"研究问题：检索增强生成能否减少学术写作中的虚假引用？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T004_W2_RETRIEVAL_FIRST,T004,RAG,zh,W2_RETRIEVAL_FIRST,检索增强生成能否减少学术写作中的虚假引用？,"研究问题：检索增强生成能否减少学术写作中的虚假引用？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T004_W3_VERIFY_REPAIR,T004,RAG,zh,W3_VERIFY_REPAIR,检索增强生成能否减少学术写作中的虚假引用？,"研究问题：检索增强生成能否减少学术写作中的虚假引用？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T005_W0_DIRECT,T005,Citation verification,en,W0_DIRECT,What automated methods can verify whether a generated citation corresponds to a real scholarly work?,"Research question: What automated methods can verify whether a generated citation corresponds to a real scholarly work?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T005_W1_CAUTIOUS,T005,Citation verification,en,W1_CAUTIOUS,What automated methods can verify whether a generated citation corresponds to a real scholarly work?,"Research question: What automated methods can verify whether a generated citation corresponds to a real scholarly work?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T005_W2_RETRIEVAL_FIRST,T005,Citation verification,en,W2_RETRIEVAL_FIRST,What automated methods can verify whether a generated citation corresponds to a real scholarly work?,"Research question: What automated methods can verify whether a generated citation corresponds to a real scholarly work?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T005_W3_VERIFY_REPAIR,T005,Citation verification,en,W3_VERIFY_REPAIR,What automated methods can verify whether a generated citation corresponds to a real scholarly work?,"Research question: What automated methods can verify whether a generated citation corresponds to a real scholarly work?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T006_W0_DIRECT,T006,Citation verification,zh,W0_DIRECT,如何自动判断大模型生成的参考文献是否真实存在？,"研究问题：如何自动判断大模型生成的参考文献是否真实存在？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T006_W1_CAUTIOUS,T006,Citation verification,zh,W1_CAUTIOUS,如何自动判断大模型生成的参考文献是否真实存在？,"研究问题：如何自动判断大模型生成的参考文献是否真实存在？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T006_W2_RETRIEVAL_FIRST,T006,Citation verification,zh,W2_RETRIEVAL_FIRST,如何自动判断大模型生成的参考文献是否真实存在？,"研究问题：如何自动判断大模型生成的参考文献是否真实存在？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T006_W3_VERIFY_REPAIR,T006,Citation verification,zh,W3_VERIFY_REPAIR,如何自动判断大模型生成的参考文献是否真实存在？,"研究问题：如何自动判断大模型生成的参考文献是否真实存在？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T007_W0_DIRECT,T007,Claim support,en,W0_DIRECT,How can we evaluate whether a cited paper actually supports the claim attributed to it?,"Research question: How can we evaluate whether a cited paper actually supports the claim attributed to it?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T007_W1_CAUTIOUS,T007,Claim support,en,W1_CAUTIOUS,How can we evaluate whether a cited paper actually supports the claim attributed to it?,"Research question: How can we evaluate whether a cited paper actually supports the claim attributed to it?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T007_W2_RETRIEVAL_FIRST,T007,Claim support,en,W2_RETRIEVAL_FIRST,How can we evaluate whether a cited paper actually supports the claim attributed to it?,"Research question: How can we evaluate whether a cited paper actually supports the claim attributed to it?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T007_W3_VERIFY_REPAIR,T007,Claim support,en,W3_VERIFY_REPAIR,How can we evaluate whether a cited paper actually supports the claim attributed to it?,"Research question: How can we evaluate whether a cited paper actually supports the claim attributed to it?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T008_W0_DIRECT,T008,Claim support,zh,W0_DIRECT,引用真实存在是否足以说明该引用支撑了论文中的论断？,"研究问题：引用真实存在是否足以说明该引用支撑了论文中的论断？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T008_W1_CAUTIOUS,T008,Claim support,zh,W1_CAUTIOUS,引用真实存在是否足以说明该引用支撑了论文中的论断？,"研究问题：引用真实存在是否足以说明该引用支撑了论文中的论断？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T008_W2_RETRIEVAL_FIRST,T008,Claim support,zh,W2_RETRIEVAL_FIRST,引用真实存在是否足以说明该引用支撑了论文中的论断？,"研究问题：引用真实存在是否足以说明该引用支撑了论文中的论断？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T008_W3_VERIFY_REPAIR,T008,Claim support,zh,W3_VERIFY_REPAIR,引用真实存在是否足以说明该引用支撑了论文中的论断？,"研究问题：引用真实存在是否足以说明该引用支撑了论文中的论断？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T009_W0_DIRECT,T009,LLM agents,en,W0_DIRECT,How can multi-agent workflows improve the reliability of AI-assisted research writing?,"Research question: How can multi-agent workflows improve the reliability of AI-assisted research writing?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T009_W1_CAUTIOUS,T009,LLM agents,en,W1_CAUTIOUS,How can multi-agent workflows improve the reliability of AI-assisted research writing?,"Research question: How can multi-agent workflows improve the reliability of AI-assisted research writing?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T009_W2_RETRIEVAL_FIRST,T009,LLM agents,en,W2_RETRIEVAL_FIRST,How can multi-agent workflows improve the reliability of AI-assisted research writing?,"Research question: How can multi-agent workflows improve the reliability of AI-assisted research writing?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T009_W3_VERIFY_REPAIR,T009,LLM agents,en,W3_VERIFY_REPAIR,How can multi-agent workflows improve the reliability of AI-assisted research writing?,"Research question: How can multi-agent workflows improve the reliability of AI-assisted research writing?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T010_W0_DIRECT,T010,LLM agents,zh,W0_DIRECT,多智能体工作流如何提升 AI 辅助科研写作的可靠性？,"研究问题：多智能体工作流如何提升 AI 辅助科研写作的可靠性？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T010_W1_CAUTIOUS,T010,LLM agents,zh,W1_CAUTIOUS,多智能体工作流如何提升 AI 辅助科研写作的可靠性？,"研究问题：多智能体工作流如何提升 AI 辅助科研写作的可靠性？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T010_W2_RETRIEVAL_FIRST,T010,LLM agents,zh,W2_RETRIEVAL_FIRST,多智能体工作流如何提升 AI 辅助科研写作的可靠性？,"研究问题：多智能体工作流如何提升 AI 辅助科研写作的可靠性？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T010_W3_VERIFY_REPAIR,T010,LLM agents,zh,W3_VERIFY_REPAIR,多智能体工作流如何提升 AI 辅助科研写作的可靠性？,"研究问题：多智能体工作流如何提升 AI 辅助科研写作的可靠性？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T011_W0_DIRECT,T011,Software engineering,en,W0_DIRECT,What software engineering practices are needed to make LLM-assisted writing workflows reproducible?,"Research question: What software engineering practices are needed to make LLM-assisted writing workflows reproducible?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T011_W1_CAUTIOUS,T011,Software engineering,en,W1_CAUTIOUS,What software engineering practices are needed to make LLM-assisted writing workflows reproducible?,"Research question: What software engineering practices are needed to make LLM-assisted writing workflows reproducible?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T011_W2_RETRIEVAL_FIRST,T011,Software engineering,en,W2_RETRIEVAL_FIRST,What software engineering practices are needed to make LLM-assisted writing workflows reproducible?,"Research question: What software engineering practices are needed to make LLM-assisted writing workflows reproducible?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T011_W3_VERIFY_REPAIR,T011,Software engineering,en,W3_VERIFY_REPAIR,What software engineering practices are needed to make LLM-assisted writing workflows reproducible?,"Research question: What software engineering practices are needed to make LLM-assisted writing workflows reproducible?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T012_W0_DIRECT,T012,Software engineering,zh,W0_DIRECT,面向大模型辅助写作的系统应如何记录可复现的审计日志？,"研究问题：面向大模型辅助写作的系统应如何记录可复现的审计日志？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T012_W1_CAUTIOUS,T012,Software engineering,zh,W1_CAUTIOUS,面向大模型辅助写作的系统应如何记录可复现的审计日志？,"研究问题：面向大模型辅助写作的系统应如何记录可复现的审计日志？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T012_W2_RETRIEVAL_FIRST,T012,Software engineering,zh,W2_RETRIEVAL_FIRST,面向大模型辅助写作的系统应如何记录可复现的审计日志？,"研究问题：面向大模型辅助写作的系统应如何记录可复现的审计日志？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T012_W3_VERIFY_REPAIR,T012,Software engineering,zh,W3_VERIFY_REPAIR,面向大模型辅助写作的系统应如何记录可复现的审计日志？,"研究问题：面向大模型辅助写作的系统应如何记录可复现的审计日志？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T013_W0_DIRECT,T013,Academic integrity,en,W0_DIRECT,What risks do hallucinated references pose to scholarly publishing and peer review?,"Research question: What risks do hallucinated references pose to scholarly publishing and peer review?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T013_W1_CAUTIOUS,T013,Academic integrity,en,W1_CAUTIOUS,What risks do hallucinated references pose to scholarly publishing and peer review?,"Research question: What risks do hallucinated references pose to scholarly publishing and peer review?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T013_W2_RETRIEVAL_FIRST,T013,Academic integrity,en,W2_RETRIEVAL_FIRST,What risks do hallucinated references pose to scholarly publishing and peer review?,"Research question: What risks do hallucinated references pose to scholarly publishing and peer review?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T013_W3_VERIFY_REPAIR,T013,Academic integrity,en,W3_VERIFY_REPAIR,What risks do hallucinated references pose to scholarly publishing and peer review?,"Research question: What risks do hallucinated references pose to scholarly publishing and peer review?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T014_W0_DIRECT,T014,Academic integrity,zh,W0_DIRECT,AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？,"研究问题：AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T014_W1_CAUTIOUS,T014,Academic integrity,zh,W1_CAUTIOUS,AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？,"研究问题：AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T014_W2_RETRIEVAL_FIRST,T014,Academic integrity,zh,W2_RETRIEVAL_FIRST,AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？,"研究问题：AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T014_W3_VERIFY_REPAIR,T014,Academic integrity,zh,W3_VERIFY_REPAIR,AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？,"研究问题：AI 生成的幻觉引用会给学术出版和同行评审带来哪些风险？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T015_W0_DIRECT,T015,RAG evaluation,en,W0_DIRECT,What metrics are commonly used to evaluate retrieval-augmented generation systems?,"Research question: What metrics are commonly used to evaluate retrieval-augmented generation systems?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T015_W1_CAUTIOUS,T015,RAG evaluation,en,W1_CAUTIOUS,What metrics are commonly used to evaluate retrieval-augmented generation systems?,"Research question: What metrics are commonly used to evaluate retrieval-augmented generation systems?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T015_W2_RETRIEVAL_FIRST,T015,RAG evaluation,en,W2_RETRIEVAL_FIRST,What metrics are commonly used to evaluate retrieval-augmented generation systems?,"Research question: What metrics are commonly used to evaluate retrieval-augmented generation systems?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T015_W3_VERIFY_REPAIR,T015,RAG evaluation,en,W3_VERIFY_REPAIR,What metrics are commonly used to evaluate retrieval-augmented generation systems?,"Research question: What metrics are commonly used to evaluate retrieval-augmented generation systems?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T016_W0_DIRECT,T016,RAG evaluation,zh,W0_DIRECT,评价 RAG 系统时哪些指标与引用可靠性最相关？,"研究问题：评价 RAG 系统时哪些指标与引用可靠性最相关？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T016_W1_CAUTIOUS,T016,RAG evaluation,zh,W1_CAUTIOUS,评价 RAG 系统时哪些指标与引用可靠性最相关？,"研究问题：评价 RAG 系统时哪些指标与引用可靠性最相关？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T016_W2_RETRIEVAL_FIRST,T016,RAG evaluation,zh,W2_RETRIEVAL_FIRST,评价 RAG 系统时哪些指标与引用可靠性最相关？,"研究问题：评价 RAG 系统时哪些指标与引用可靠性最相关？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T016_W3_VERIFY_REPAIR,T016,RAG evaluation,zh,W3_VERIFY_REPAIR,评价 RAG 系统时哪些指标与引用可靠性最相关？,"研究问题：评价 RAG 系统时哪些指标与引用可靠性最相关？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T017_W0_DIRECT,T017,AI for Science,en,W0_DIRECT,How are LLM-based research assistants changing scientific literature review workflows?,"Research question: How are LLM-based research assistants changing scientific literature review workflows?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T017_W1_CAUTIOUS,T017,AI for Science,en,W1_CAUTIOUS,How are LLM-based research assistants changing scientific literature review workflows?,"Research question: How are LLM-based research assistants changing scientific literature review workflows?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T017_W2_RETRIEVAL_FIRST,T017,AI for Science,en,W2_RETRIEVAL_FIRST,How are LLM-based research assistants changing scientific literature review workflows?,"Research question: How are LLM-based research assistants changing scientific literature review workflows?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T017_W3_VERIFY_REPAIR,T017,AI for Science,en,W3_VERIFY_REPAIR,How are LLM-based research assistants changing scientific literature review workflows?,"Research question: How are LLM-based research assistants changing scientific literature review workflows?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T018_W0_DIRECT,T018,AI for Science,zh,W0_DIRECT,大模型科研助手如何改变文献综述和证据综合流程？,"研究问题：大模型科研助手如何改变文献综述和证据综合流程？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T018_W1_CAUTIOUS,T018,AI for Science,zh,W1_CAUTIOUS,大模型科研助手如何改变文献综述和证据综合流程？,"研究问题：大模型科研助手如何改变文献综述和证据综合流程？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T018_W2_RETRIEVAL_FIRST,T018,AI for Science,zh,W2_RETRIEVAL_FIRST,大模型科研助手如何改变文献综述和证据综合流程？,"研究问题：大模型科研助手如何改变文献综述和证据综合流程？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T018_W3_VERIFY_REPAIR,T018,AI for Science,zh,W3_VERIFY_REPAIR,大模型科研助手如何改变文献综述和证据综合流程？,"研究问题：大模型科研助手如何改变文献综述和证据综合流程？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T019_W0_DIRECT,T019,Prompting,en,W0_DIRECT,Can explicit uncertainty instructions reduce fabricated references in LLM outputs?,"Research question: Can explicit uncertainty instructions reduce fabricated references in LLM outputs?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T019_W1_CAUTIOUS,T019,Prompting,en,W1_CAUTIOUS,Can explicit uncertainty instructions reduce fabricated references in LLM outputs?,"Research question: Can explicit uncertainty instructions reduce fabricated references in LLM outputs?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T019_W2_RETRIEVAL_FIRST,T019,Prompting,en,W2_RETRIEVAL_FIRST,Can explicit uncertainty instructions reduce fabricated references in LLM outputs?,"Research question: Can explicit uncertainty instructions reduce fabricated references in LLM outputs?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T019_W3_VERIFY_REPAIR,T019,Prompting,en,W3_VERIFY_REPAIR,Can explicit uncertainty instructions reduce fabricated references in LLM outputs?,"Research question: Can explicit uncertainty instructions reduce fabricated references in LLM outputs?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T020_W0_DIRECT,T020,Prompting,zh,W0_DIRECT,提示模型“不确定就不要引用”能否降低虚假引用比例？,"研究问题：提示模型“不确定就不要引用”能否降低虚假引用比例？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T020_W1_CAUTIOUS,T020,Prompting,zh,W1_CAUTIOUS,提示模型“不确定就不要引用”能否降低虚假引用比例？,"研究问题：提示模型“不确定就不要引用”能否降低虚假引用比例？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T020_W2_RETRIEVAL_FIRST,T020,Prompting,zh,W2_RETRIEVAL_FIRST,提示模型“不确定就不要引用”能否降低虚假引用比例？,"研究问题：提示模型“不确定就不要引用”能否降低虚假引用比例？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T020_W3_VERIFY_REPAIR,T020,Prompting,zh,W3_VERIFY_REPAIR,提示模型“不确定就不要引用”能否降低虚假引用比例？,"研究问题：提示模型“不确定就不要引用”能否降低虚假引用比例？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T021_W0_DIRECT,T021,Bibliographic metadata,en,W0_DIRECT,Which bibliographic metadata fields are most useful for detecting citation hallucinations?,"Research question: Which bibliographic metadata fields are most useful for detecting citation hallucinations?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T021_W1_CAUTIOUS,T021,Bibliographic metadata,en,W1_CAUTIOUS,Which bibliographic metadata fields are most useful for detecting citation hallucinations?,"Research question: Which bibliographic metadata fields are most useful for detecting citation hallucinations?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T021_W2_RETRIEVAL_FIRST,T021,Bibliographic metadata,en,W2_RETRIEVAL_FIRST,Which bibliographic metadata fields are most useful for detecting citation hallucinations?,"Research question: Which bibliographic metadata fields are most useful for detecting citation hallucinations?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T021_W3_VERIFY_REPAIR,T021,Bibliographic metadata,en,W3_VERIFY_REPAIR,Which bibliographic metadata fields are most useful for detecting citation hallucinations?,"Research question: Which bibliographic metadata fields are most useful for detecting citation hallucinations?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T022_W0_DIRECT,T022,Bibliographic metadata,zh,W0_DIRECT,作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？,"研究问题：作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T022_W1_CAUTIOUS,T022,Bibliographic metadata,zh,W1_CAUTIOUS,作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？,"研究问题：作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T022_W2_RETRIEVAL_FIRST,T022,Bibliographic metadata,zh,W2_RETRIEVAL_FIRST,作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？,"研究问题：作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T022_W3_VERIFY_REPAIR,T022,Bibliographic metadata,zh,W3_VERIFY_REPAIR,作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？,"研究问题：作者、标题、年份、DOI 中哪些字段最适合检测幻觉引用？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T023_W0_DIRECT,T023,Open bibliographic data,en,W0_DIRECT,How can Crossref,"Research question: How can Crossref
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T023_W1_CAUTIOUS,T023,Open bibliographic data,en,W1_CAUTIOUS,How can Crossref,"Research question: How can Crossref
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T023_W2_RETRIEVAL_FIRST,T023,Open bibliographic data,en,W2_RETRIEVAL_FIRST,How can Crossref,"Research question: How can Crossref
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T023_W3_VERIFY_REPAIR,T023,Open bibliographic data,en,W3_VERIFY_REPAIR,How can Crossref,"Research question: How can Crossref
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T024_W0_DIRECT,T024,Open bibliographic data,zh,W0_DIRECT,Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？,"研究问题：Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T024_W1_CAUTIOUS,T024,Open bibliographic data,zh,W1_CAUTIOUS,Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？,"研究问题：Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T024_W2_RETRIEVAL_FIRST,T024,Open bibliographic data,zh,W2_RETRIEVAL_FIRST,Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？,"研究问题：Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T024_W3_VERIFY_REPAIR,T024,Open bibliographic data,zh,W3_VERIFY_REPAIR,Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？,"研究问题：Crossref、OpenAlex、Semantic Scholar 和 arXiv 如何用于引用核验？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T025_W0_DIRECT,T025,Human-AI workflow,en,W0_DIRECT,How much human effort is required to verify references generated by LLM-assisted writing tools?,"Research question: How much human effort is required to verify references generated by LLM-assisted writing tools?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T025_W1_CAUTIOUS,T025,Human-AI workflow,en,W1_CAUTIOUS,How much human effort is required to verify references generated by LLM-assisted writing tools?,"Research question: How much human effort is required to verify references generated by LLM-assisted writing tools?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T025_W2_RETRIEVAL_FIRST,T025,Human-AI workflow,en,W2_RETRIEVAL_FIRST,How much human effort is required to verify references generated by LLM-assisted writing tools?,"Research question: How much human effort is required to verify references generated by LLM-assisted writing tools?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T025_W3_VERIFY_REPAIR,T025,Human-AI workflow,en,W3_VERIFY_REPAIR,How much human effort is required to verify references generated by LLM-assisted writing tools?,"Research question: How much human effort is required to verify references generated by LLM-assisted writing tools?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T026_W0_DIRECT,T026,Human-AI workflow,zh,W0_DIRECT,人工核验大模型生成引用需要多少成本和时间？,"研究问题：人工核验大模型生成引用需要多少成本和时间？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T026_W1_CAUTIOUS,T026,Human-AI workflow,zh,W1_CAUTIOUS,人工核验大模型生成引用需要多少成本和时间？,"研究问题：人工核验大模型生成引用需要多少成本和时间？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T026_W2_RETRIEVAL_FIRST,T026,Human-AI workflow,zh,W2_RETRIEVAL_FIRST,人工核验大模型生成引用需要多少成本和时间？,"研究问题：人工核验大模型生成引用需要多少成本和时间？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T026_W3_VERIFY_REPAIR,T026,Human-AI workflow,zh,W3_VERIFY_REPAIR,人工核验大模型生成引用需要多少成本和时间？,"研究问题：人工核验大模型生成引用需要多少成本和时间？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T027_W0_DIRECT,T027,Chinese academic writing,en,W0_DIRECT,Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?,"Research question: Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T027_W1_CAUTIOUS,T027,Chinese academic writing,en,W1_CAUTIOUS,Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?,"Research question: Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T027_W2_RETRIEVAL_FIRST,T027,Chinese academic writing,en,W2_RETRIEVAL_FIRST,Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?,"Research question: Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T027_W3_VERIFY_REPAIR,T027,Chinese academic writing,en,W3_VERIFY_REPAIR,Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?,"Research question: Do Chinese prompts and English prompts lead to different citation reliability in LLM-assisted writing?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T028_W0_DIRECT,T028,Chinese academic writing,zh,W0_DIRECT,中文提示和英文提示在生成学术引用时是否存在可靠性差异？,"研究问题：中文提示和英文提示在生成学术引用时是否存在可靠性差异？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T028_W1_CAUTIOUS,T028,Chinese academic writing,zh,W1_CAUTIOUS,中文提示和英文提示在生成学术引用时是否存在可靠性差异？,"研究问题：中文提示和英文提示在生成学术引用时是否存在可靠性差异？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T028_W2_RETRIEVAL_FIRST,T028,Chinese academic writing,zh,W2_RETRIEVAL_FIRST,中文提示和英文提示在生成学术引用时是否存在可靠性差异？,"研究问题：中文提示和英文提示在生成学术引用时是否存在可靠性差异？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T028_W3_VERIFY_REPAIR,T028,Chinese academic writing,zh,W3_VERIFY_REPAIR,中文提示和英文提示在生成学术引用时是否存在可靠性差异？,"研究问题：中文提示和英文提示在生成学术引用时是否存在可靠性差异？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T029_W0_DIRECT,T029,Repair workflow,en,W0_DIRECT,Can a verify-and-repair loop convert invalid LLM-generated references into valid references?,"Research question: Can a verify-and-repair loop convert invalid LLM-generated references into valid references?
+
+Write a related-work paragraph for an academic paper and include references.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T029_W1_CAUTIOUS,T029,Repair workflow,en,W1_CAUTIOUS,Can a verify-and-repair loop convert invalid LLM-generated references into valid references?,"Research question: Can a verify-and-repair loop convert invalid LLM-generated references into valid references?
+
+Write a related-work paragraph for an academic paper. Cite only papers that you are confident really exist. If you are unsure, do not fabricate a reference. Include DOI when available, but do not guess DOI values. Each reference must be verifiable by author, year, title, or DOI.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T029_W2_RETRIEVAL_FIRST,T029,Repair workflow,en,W2_RETRIEVAL_FIRST,Can a verify-and-repair loop convert invalid LLM-generated references into valid references?,"Research question: Can a verify-and-repair loop convert invalid LLM-generated references into valid references?
+
+You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list. If the list is insufficient, say so rather than fabricating citations.
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T029_W3_VERIFY_REPAIR,T029,Repair workflow,en,W3_VERIFY_REPAIR,Can a verify-and-repair loop convert invalid LLM-generated references into valid references?,"Research question: Can a verify-and-repair loop convert invalid LLM-generated references into valid references?
+
+Write a related-work paragraph for an academic paper. The references will later be automatically verified, so use only real and verifiable references. Do not invent authors, titles, years, venues, or DOI values.
+
+Use this exact output structure:
+[Body]
+One related-work paragraph of 150-250 words using numbered citations such as [1] and [2].
+
+[References]
+List 5-8 references by number. Include authors, year, title, venue/source, and DOI when available."
+T030_W0_DIRECT,T030,Repair workflow,zh,W0_DIRECT,自动核验与修复循环能否提升大模型生成参考文献的可用率？,"研究问题：自动核验与修复循环能否提升大模型生成参考文献的可用率？
+
+请写一段学术论文相关工作综述，并加入参考文献。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T030_W1_CAUTIOUS,T030,Repair workflow,zh,W1_CAUTIOUS,自动核验与修复循环能否提升大模型生成参考文献的可用率？,"研究问题：自动核验与修复循环能否提升大模型生成参考文献的可用率？
+
+请写一段学术论文相关工作综述。只引用你确信真实存在的论文；如果不确定，不要编造。尽量给出 DOI，但不要猜 DOI。引用必须能被作者、年份、题名或 DOI 核验。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T030_W2_RETRIEVAL_FIRST,T030,Repair workflow,zh,W2_RETRIEVAL_FIRST,自动核验与修复循环能否提升大模型生成参考文献的可用率？,"研究问题：自动核验与修复循环能否提升大模型生成参考文献的可用率？
+
+下面会提供候选文献列表。请只基于候选文献写相关工作综述，不要引用候选列表之外的论文。如果候选文献不足，请明确说明，而不是编造引用。
+
+[Retrieved Sources]
+{{retrieved_sources}}
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"
+T030_W3_VERIFY_REPAIR,T030,Repair workflow,zh,W3_VERIFY_REPAIR,自动核验与修复循环能否提升大模型生成参考文献的可用率？,"研究问题：自动核验与修复循环能否提升大模型生成参考文献的可用率？
+
+请先写一段学术论文相关工作综述。随后这些引用会被自动核验；因此请只使用真实、可核验的引用，不要虚构作者、题名、年份、期刊或 DOI。
+
+请严格使用以下结构输出：
+[正文]
+一段 300-500 字的相关工作综述，使用 [1]、[2] 这类编号引用。
+
+[References]
+按编号列出 5-8 条参考文献。每条尽量包含作者、年份、题名、来源和 DOI。"

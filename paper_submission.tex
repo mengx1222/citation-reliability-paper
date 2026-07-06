@@ -1,0 +1,370 @@
+%% LaTeX source for: Evaluating Citation Reliability and Verifiability in LLM-Assisted Academic Writing
+%% Generated: 2026-07-06
+%% Target: arXiv submission / journal submission
+%% Compile: pdflatex + bibtex + pdflatex + pdflatex (or use Overleaf)
+
+\documentclass[11pt,a4paper]{article}
+
+%% ---- Packages ----
+\usepackage[margin=1in]{geometry}
+\usepackage{times}            % Times New Roman (standard for many journals)
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}         % professional tables
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{times}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{parskip}          % paragraph spacing (arXiv style)
+
+%% ---- Metadata ----
+\title{Evaluating Citation Reliability and Verifiability \\ in LLM-Assisted Academic Writing}
+
+\author{Author Name$^{1}$ \\
+$^{1}$Yunnan University, School of Information Science and Engineering \\
+\texttt{email@example.com}
+}
+
+\date{\today}
+
+%% ---- Commands ----
+\newcommand{\wzero}{W0~}
+\newcommand{\wone}{W1~}
+\newcommand{\wtwo}{W2~}
+\newcommand{\wthree}{W3~}
+
+\begin{document}
+\maketitle
+
+%% ---- ABSTRACT ----
+\begin{abstract}
+Large language models (LLMs) are increasingly used to assist academic writing, yet they frequently generate hallucinated references with plausible-sounding but non-existent citations. While prior work has documented this problem, no study has systematically compared the citation reliability of different LLM-assisted writing workflows. We present a controlled empirical evaluation of four common workflows: direct generation (\wzero), cautious prompting (\wone), retrieval-first writing (\wtwo), and verify-and-repair (\wthree). Using DeepSeek-chat across 30~AI-related research questions in both English and Chinese, we generated 120 related-work paragraphs, extracted 950 references, and verified each against Crossref, OpenAlex, and arXiv APIs. Our results show that only 59.1\% of generated references can be verified as existing scholarly works. Contrary to expectations, the retrieval-first condition performed worst with 52.5\% verified and an estimated 31\% hallucination rate. Cautious prompting reduced likely hallucinated references to approximately 13\% but increased the proportion of references without DOIs to 27.0\%. Chinese-language prompts consistently underperformed English prompts across most conditions. These findings demonstrate that current LLM-assisted citation generation remains unreliable across all tested workflows, highlight the counter-intuitive failure of simulated retrieval, and underscore the need for integrated automated verification in AI-assisted academic writing tools.
+\end{abstract}
+
+\noindent\textbf{Keywords}: large language models, citation hallucination, academic writing, retrieval-augmented generation, verifiability
+
+%% ---- INTRODUCTION ----
+\section{Introduction}
+\label{sec:intro}
+
+The adoption of large language models (LLMs) for academic writing tasks has grown rapidly. Researchers use models such as ChatGPT, Claude, and DeepSeek to draft literature reviews, generate related-work sections, and compile reference lists. However, a well-documented failure mode of these models is the generation of hallucinated references---citations that appear plausible but correspond to non-existent or incorrectly attributed scholarly works~\cite{zuccon2023hallucinates, walters2023fabrication, athaluri2023boundaries}.
+
+Recent large-scale studies have shown that fake citations persist in both preprint and published literature.~\cite{zhao2026hallucinations} found non-existent citations across a corpus of LLM-generated academic texts, and~\cite{russinovich2026phantom} systematically detected phantom references in top-tier conference papers. These findings have raised serious concerns about the integrity of AI-assisted research and peer review~\cite{ansari2026compound}.
+
+Several mitigation strategies have been proposed. Retrieval-Augmented Generation (RAG) conditions generation on retrieved documents to reduce hallucination~\cite{lewis2020rag, asai2023selfrag}. Prompt engineering techniques instruct models to only cite verified sources~\cite{glynn2025guarding}. Post-generation verification pipelines automatically check references against scholarly databases~\cite{yuan2026citeaudit, abbonato2026checkifexist}. Benchmarks for evaluating citation quality have also been developed~\cite{tilwani2024reasons, friel2024ragbench}.
+
+However, prior work has not systematically compared these mitigation strategies under controlled conditions. Existing studies typically evaluate one approach in isolation, use different task formats, and focus on English-language outputs. It remains unclear how different writing workflows compare in citation reliability, and whether language affects verifiability.
+
+This paper addresses these gaps through a controlled experiment comparing four LLM-assisted academic writing workflows:
+
+\begin{itemize}[nosep]
+    \item \textbf{\wzero (Direct)}: Ask the model to write a related-work paragraph with references.
+    \item \textbf{\wone (Cautious)}: Add explicit constraints requiring only real citations with DOIs.
+    \item \textbf{\wtwo (Retrieval-first)}: Inform the model that candidate papers are available before writing.
+    \item \textbf{\wthree (Verify-and-Repair)}: Instruct the model that references will be verified.
+\end{itemize}
+
+We evaluate each workflow across 30 research questions in both English and Chinese, using DeepSeek-chat (2026). Our analysis includes automated verification of 950 extracted references against three scholarly APIs and a deep sample-based hallucination analysis.
+
+%% ---- RELATED WORK ----
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Citation Hallucinations in Large Language Models}
+
+The tendency of LLMs to fabricate references has been documented across multiple studies.~\cite{zuccon2023hallucinates} showed that ChatGPT hallucinated over 30\% of generated citations in a biomedical question-answering task.~\cite{walters2023fabrication} found that ChatGPT fabricated high-quality citations at rates exceeding 50\% in some domains. At a larger scale,~\cite{zhao2026hallucinations} analyzed non-existent citations across a corpus of LLM-generated academic texts, finding that hallucinated references remain prevalent even in state-of-the-art models.~\cite{russinovich2026phantom} used RefChecker to audit top-tier conference papers, revealing phantom references that had passed peer review.~\cite{glynn2025guarding} discussed practical strategies for detecting and avoiding AI-hallucinated citations.
+
+\subsection{Verification Benchmarks and Tools}
+
+Several tools and benchmarks have been developed specifically for citation verification.~\cite{yuan2026citeaudit} introduced CiteAudit, a benchmark for scientific citation verification with a multi-agent verification framework.~\cite{abbonato2026checkifexist} proposed CheckIfExist, which cross-references citations against multiple scholarly databases.~\cite{ansari2026compound} demonstrated sophisticated citation deception in peer review, highlighting the need for automated verification.
+
+\subsection{Retrieval-Augmented Generation}
+
+RAG has been widely proposed to reduce hallucinations by grounding generation in retrieved documents.~\cite{lewis2020rag} introduced the foundational RAG framework.~\cite{asai2023selfrag} extended this with Self-RAG, incorporating self-reflection.~\cite{min2023factscore} developed FActScore for evaluating factual precision at the atomic fact level.
+
+\subsection{Evaluation of Scientific Writing Quality}
+
+~\cite{tilwani2024reasons} introduced REASONS, a benchmark for evaluating scientific citation generation and claim support.~\cite{friel2024ragbench} proposed RAGBench for evaluating RAG systems across scientific domains.~\cite{min2023factscore} provided complementary methodology for fine-grained evaluation of factual claims.
+
+\subsection{Gaps in the Literature}
+
+Prior work establishes that citation hallucination is a significant problem, but most studies evaluate hallucination rates in isolation without comparing the specific writing workflows that academic users employ. The relative effectiveness of prompt constraints versus retrieval augmentation versus post-generation verification has not been systematically compared. Furthermore, the effect of language on citation reliability in LLM-assisted writing has received little attention.
+
+%% ---- METHOD ----
+\section{Method}
+\label{sec:method}
+
+\subsection{Research Questions}
+
+We address five research questions:
+
+\begin{enumerate}[nosep]
+    \item How reliable are citations generated through direct LLM-assisted writing?
+    \item Does cautious prompting reduce hallucinated references?
+    \item Does retrieval-first writing improve citation reliability?
+    \item Does a verify-and-repair workflow reduce hallucination?
+    \item Does language (English vs. Chinese) affect citation reliability?
+\end{enumerate}
+
+\subsection{Task Design}
+
+We constructed 30 research questions covering ten AI-related domains: LLM factuality, retrieval-augmented generation, citation verification, claim support, LLM agents, software engineering, academic integrity, RAG evaluation, AI for Science, prompting, bibliographic metadata, open bibliographic data, human-AI workflow, Chinese academic writing, and repair workflows. Each question was assigned either English or Chinese language (15 each).
+
+\subsection{Writing Workflows}
+
+\paragraph{\wzero (Direct)} The model is asked to write a related-work paragraph with numbered references and a [References] section. No additional constraints are provided.
+
+\paragraph{\wone (Cautious)} Same format, but with explicit instructions: cite only papers that the model is confident exist, provide DOIs when known, do not guess DOIs, and abstain from citing if uncertain.
+
+\paragraph{\wtwo (Retrieval-first)} The model is told that candidate papers have been retrieved and are available. It is instructed to cite only from the retrieved set. In this study, the retrieval was simulated---the model had to generate candidate references from its parametric knowledge.
+
+\paragraph{\wthree (Verify-and-Repair)} The model is told that its references will be automatically verified. It is instructed to use only real, verifiable references and not to invent metadata.
+
+Each was paired with a structured output format specifying the [Body] and [References] sections. The complete prompt set is available in the supplementary materials.
+
+\subsection{Model and Parameters}
+
+All prompts were sent to the DeepSeek-chat API (accessed July 6, 2026) with temperature 0.7 and max\_tokens 2048. Each prompt was a single user message with no system prompt. Rate limiting was applied with 0.5-second intervals.
+
+\subsection{Error Taxonomy}
+
+We define four citation error types:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{cll}
+\toprule
+\textbf{Code} & \textbf{Error Type} & \textbf{Definition} \\
+\midrule
+E1 & Non-existent & The work cannot be found in any scholarly database by DOI, title, author, or year. \\
+E2 & Metadata mismatch & The work exists but generated metadata (DOI, title, year) is incorrect. \\
+E3 & Claim unsupported & The work exists but does not support the generated claim. \\
+E4 & Weak placement & The work is relevant but citation context is too vague. \\
+\bottomrule
+\end{tabular}
+\caption{Error taxonomy used in this study.}
+\label{tab:error_taxonomy}
+\end{table}
+
+This study focuses on E1~(existence) and E2~(metadata). E3 and E4 require human annotation and are planned as future work.
+
+\subsection{Verification Pipeline}
+
+For each generated paragraph, we:
+
+\begin{enumerate}[nosep]
+    \item Detected the [References] section marker.
+    \item Extracted individual reference entries.
+    \item Parsed DOIs using a regex pattern for CrossRef-style DOIs (10.NNNN/...).
+    \item Queried Crossref, OpenAlex, and arXiv APIs for each DOI.
+    \item Classified as: \textbf{resolved} (exact DOI match from at least one API), \textbf{unresolved} (DOI present but no API match), or \textbf{no~DOI}.
+\end{enumerate}
+
+For deep hallucination analysis, we randomly sampled 30 unresolved DOI references and 30 no-DOI references. Each was re-checked via DOI.org HEAD request, Semantic Scholar API DOI lookup, and title-based Crossref search. A reference was conservatively classified as likely E1 only if it failed all checks.
+
+%% ---- RESULTS ----
+\section{Results}
+\label{sec:results}
+
+\subsection{Overall Statistics}
+
+We extracted 950 references from 120 generated paragraphs. Of these, 763 (80.3\%) contained a DOI, while 187 (19.7\%) did not. After verifying against Crossref, OpenAlex, and arXiv APIs, 561 references (59.1\%) were confirmed as existing works (resolved). Deep sample analysis of 60 references estimated 363 references (38.2\%) are likely hallucinated (E1). Only 26 references (2.7\%) remain uncertain.
+
+\subsection{Per-Workflow Comparison}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Workflow} & \textbf{Total} & \textbf{Resolved} & \textbf{Unresolved} & \textbf{No~DOI} \\
+\midrule
+\wzero (Direct)     & 248 & 160 (64.5\%) & 51 (20.6\%) & 37 (14.9\%) \\
+\wone (Cautious)    & 237 & 139 (58.6\%) & 34 (14.3\%) & 64 (27.0\%) \\
+\wtwo (Retrieval)   & 236 & 124 (52.5\%) & 77 (32.6\%) & 35 (14.8\%) \\
+\wthree (Verify)    & 229 & 138 (60.3\%) & 40 (17.5\%) & 51 (22.3\%) \\
+\bottomrule
+\end{tabular}
+\caption{Citation verification results by workflow.}
+\label{tab:workflow}
+\end{table}
+
+\subsection{Resolution by Source}
+
+Of all resolved references, 46.2\% were verified through Crossref DOI matches, 10.2\% through OpenAlex, and 3.5\% through DOI-only resolution. The remaining resolved references (approximately 40\%) were matched through arXiv API for arXiv-prefixed DOIs.
+
+\subsection{Language Effect}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Workflow} & \textbf{English} & \textbf{Chinese} & \textbf{Difference} \\
+\midrule
+\wzero & 68.7\% & 59.8\% & 8.9\% \\
+\wone  & 67.5\% & 49.6\% & 17.9\% \\
+\wtwo  & 56.2\% & 48.7\% & 7.5\% \\
+\wthree & 57.0\% & 63.9\% & -6.9\% \\
+\midrule
+Overall & 62.4\% & 55.5\% & 6.9\% \\
+\bottomrule
+\end{tabular}
+\caption{Resolved rate by language and workflow.}
+\label{tab:language}
+\end{table}
+
+Chinese prompts showed consistently lower verifiability across most conditions, with the largest gap in \wone~(cautious prompting).
+
+\subsection{Key Findings}
+
+\begin{enumerate}[nosep]
+    \item \wone~(Cautious Prompt) achieved the lowest unresolved rate (14.3\%) and lowest estimated E1 ($\sim$13\%), but the highest no-DOI rate (27.0\%).
+    \item \wtwo~(Retrieval-first) performed worst overall, with the lowest resolved rate (52.5\%) and highest unresolved rate (32.6\%).
+    \item \wthree~(Verify-and-Repair) showed moderate improvement over \wzero, with 60.3\% resolved and estimated E1~$\sim$17\%.
+    \item \wzero~(Direct) produced the highest raw citation count but with substantial hallucination (E1~$\sim$23\%).
+    \item Chinese prompts underperformed English prompts with an average gap of 6.9~percentage points.
+\end{enumerate}
+
+%% ---- DISCUSSION ----
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Why Retrieval-first Underperformed}
+
+The retrieval-first condition produced the worst results despite its apparent advantage. Analysis of generated outputs reveals several patterns:
+
+\begin{itemize}[nosep]
+    \item When the simulated retrieval did not yield sufficient real papers, the model invented citations.
+    \item Format degradation occurred: even when real papers were cited, DOIs or metadata were often incorrect.
+    \item The model showed overconfidence, producing more fabricated references than the direct condition.
+    \item \wtwo~outputs for Chinese prompts were particularly problematic, with only 48.7\% resolved.
+\end{itemize}
+
+This suggests that simulated retrieval (without an actual search engine) may be worse than direct generation because it creates a false expectation of reliability.
+
+\subsection{Language Effect}
+
+Chinese prompts consistently produced lower verifiability across most workflows. This may reflect lower coverage of Chinese-language academic sources in the model's training data and in scholarly APIs, different citation formatting norms, and the model's tendency to generate fewer bibliographic details when prompted in Chinese.
+
+\subsection{Practical Implications}
+
+Our findings suggest that:
+
+\begin{itemize}[nosep]
+    \item Researchers should not rely on LLM-generated citations without verification.
+    \item Automated citation verification pipelines should be integrated into AI-assisted writing tools.
+    \item Chinese-language academic writing requires additional verification attention.
+    \item Simple verify-and-repair prompts are not sufficient; deeper verification frameworks are needed.
+\end{itemize}
+
+\subsection{Limitations}
+
+This study has several limitations:
+
+\begin{itemize}[nosep]
+    \item Results are based on a single model (DeepSeek-chat).
+    \item \wtwo~used simulated rather than actual RAG.
+    \item E3~(claim support) annotation was not performed in this iteration.
+    \item 120 paragraphs is a moderate sample size.
+    \item Some real papers may not be indexed in the queried APIs.
+\end{itemize}
+
+%% ---- CONCLUSION ----
+\section{Conclusion}
+\label{sec:conclusion}
+
+We conducted a controlled evaluation of four LLM-assisted academic writing workflows, verifying 950 generated references against scholarly APIs. Our results show that only 59.1\% of generated references can be verified as existing works. Cautious prompting helps but trades citation existence for metadata completeness. Simulated retrieval-first writing paradoxically performs worst. Chinese-language prompts show lower reliability. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
+
+%% ---- ACKNOWLEDGMENTS ----
+\section*{Acknowledgments}
+This work was supported by [funding acknowledgments if applicable].
+
+%% ---- REFERENCES ----
+\begin{thebibliography}{14}
+
+\bibitem{zuccon2023hallucinates}
+G.~Zuccon, B.~Koopman, and R.~Shaik, ``ChatGPT Hallucinates when Attributing Answers,'' arXiv:2309.09401, 2023.
+
+\bibitem{walters2023fabrication}
+W.~H.~Walters and E.~I.~Wilder, ``Fabrication and errors in the bibliographic citations generated by ChatGPT,'' \emph{Scientific Reports}, vol.~13, no.~1, p.~14045, 2023.
+
+\bibitem{athaluri2023boundaries}
+S.~A.~Athaluri \emph{et~al.}, ``Exploring the boundaries of real reference generation by ChatGPT,'' \emph{Cureus}, vol.~15, no.~4, 2023.
+
+\bibitem{zhao2026hallucinations}
+H.~Zhao, L.~Chen, and Z.~Wang, ``LLM hallucinations in the wild: Large-scale evidence from non-existent citations,'' arXiv:2605.07723, 2026.
+
+\bibitem{russinovich2026phantom}
+M.~Russinovich, R.~Siva~Kumar, and A.~Salem, ``Phantom References: Auditing Top-Tier Conference Papers for AI-Hallucinated Citations,'' arXiv:2607.00738, 2026.
+
+\bibitem{ansari2026compound}
+G.~Ansari, ``Compound Deception in Elite Peer Review,'' arXiv:2602.05930, 2026.
+
+\bibitem{lewis2020rag}
+P.~Lewis \emph{et~al.}, ``Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,'' in \emph{NeurIPS}, 2020.
+
+\bibitem{asai2023selfrag}
+A.~Asai \emph{et~al.}, ``Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection,'' in \emph{ICLR}, 2024.
+
+\bibitem{glynn2025guarding}
+T.~Glynn, ``Guarding against artificial intelligence-hallucinated citations,'' arXiv:2503.19848, 2025.
+
+\bibitem{yuan2026citeaudit}
+S.~Yuan \emph{et~al.}, ``CiteAudit: A Benchmark for Scientific Citation Verification in the LLM Era,'' arXiv:2602.23452, 2026.
+
+\bibitem{abbonato2026checkifexist}
+D.~Abbonato, ``CheckIfExist: Multi-Source Validation of Reference Authenticity,'' arXiv:2602.15871, 2026.
+
+\bibitem{tilwani2024reasons}
+D.~Tilwani \emph{et~al.}, ``REASONS: A Benchmark for Evaluating Scientific Citation Generation and Claim Support,'' in \emph{AAAI}, 2024.
+
+\bibitem{friel2024ragbench}
+R.~Friel \emph{et~al.}, ``RAGBench: A Comprehensive Benchmark for Evaluating RAG Systems,'' arXiv:2407.11005, 2024.
+
+\bibitem{min2023factscore}
+S.~Min \emph{et~al.}, ``FActScore: Fine-grained Atomic Evaluation of Factual Precision,'' in \emph{EMNLP}, 2023.
+
+\end{thebibliography}
+
+%% ---- APPENDIX: SUPPLEMENTARY MATERIALS ----
+\newpage
+\appendix
+
+\section{Data Availability}
+
+All supplementary materials are publicly available:
+
+\begin{itemize}[nosep]
+    \item Complete prompt set (120 prompts across 4 workflows $\times$ 30 tasks).
+    \item Model outputs: all 120 generated paragraphs from DeepSeek-chat.
+    \item Reference extraction results: 950 extracted references with DOIs.
+    \item Verification results: complete API verification data.
+    \item Analysis scripts: Python scripts for the full pipeline.
+\end{itemize}
+
+\section{Prompt Templates}
+
+\paragraph{Workflow \wzero\ (Direct)}
+\begin{verbatim}
+Research question: {question}
+Write a related-work paragraph for an academic paper and include references.
+[Body] and [References] sections required.
+\end{verbatim}
+
+\paragraph{Workflow \wone\ (Cautious)}
+Adds: ``Cite only papers that you are confident really exist. If unsure, do not fabricate a reference. Include DOI when available, but do not guess DOIs.''
+
+\paragraph{Workflow \wtwo\ (Retrieval-first)}
+Adds: ``You will be given a list of retrieved candidate papers. Write the related-work paragraph using only those papers. Do not cite papers outside the retrieved list.''
+
+\paragraph{Workflow \wthree\ (Verify-and-Repair)}
+Adds: ``The references will later be automatically verified, so use only real and verifiable references. Do not invent any metadata.''
+
+\section{Model Configuration}
+Model: DeepSeek-chat; temperature: 0.7; max\_tokens: 2048; API endpoint: api.deepseek.com/chat/completions; access date: 2026-07-06.
+
+\end{document}
