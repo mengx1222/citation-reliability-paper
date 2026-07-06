@@ -248,25 +248,23 @@ Our W0 direct generation condition produced an estimated E1 rate of approximatel
 
 This study has several limitations:
 
-- **Single model**: Results are based on DeepSeek-chat only. Other models may perform differently.
+- **Limited models**: Validated across two models (DeepSeek-chat and Qwen3-14B). While the invariant workflow ranking strengthens generalizability, more models (e.g., GPT-4o, Claude Sonnet) are needed to confirm the pattern.
 - **Simulated retrieval**: W2 used a prompt-level simulation rather than an actual RAG system with a search engine.
-- **No E3 annotation**: We did not evaluate claim support (whether citations support their associated claims).
-- **Sample size**: 30 research questions × 4 workflows = 120 paragraphs is moderate.
+- **Limited E3 annotation**: Preliminary claim support analysis on a sample of 52 references was conducted; full results are deferred to a separate study.
+- **Sample size**: 30 research questions × 4 workflows × 2 models = 240 paragraphs is moderate.
 - **API coverage**: Some real papers may not be indexed in the APIs we queried.
 
 ## 6. Conclusion
 
-We conducted a controlled evaluation of four LLM-assisted academic writing workflows, verifying 950 generated references against scholarly APIs. Our results show that only 59.1% of generated references can be verified as existing works. Cautious prompting helps but trades citation existence for metadata completeness. Simulated retrieval writing paradoxically performs worst. Chinese language prompts show lower reliability. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
-
-
+We conducted a controlled evaluation of four LLM-assisted academic writing workflows across two models (DeepSeek-chat and Qwen3-14B), verifying 1,974 references (950 from DeepSeek + 1,024 from Qwen3) against scholarly APIs. Our results show that only 59.1% (DeepSeek) and 16.4% (Qwen3) of generated references can be verified as existing works. Critically, the relative ranking of workflows is invariant across models: verify-and-repair (W3) > direct generation (W0) > cautious prompting (W1) > simulated retrieval (W2). Cautious prompting helps but trades citation existence for metadata completeness. Simulated retrieval writing paradoxically performs worst across both models. Chinese language prompts show lower reliability. The invariant workflow ranking across two models suggests that these risks are not model-specific, and that workflow-level interventions such as verify-and-repair instructions can provide consistent benefits across different LLM backends. These findings underscore the need for integrated verification pipelines in AI-assisted academic writing tools and caution against reliance on unverified LLM-generated citations.
 
 ## Data Availability and Supplementary Materials
 
 All supplementary materials are publicly available to ensure reproducibility of this study:
 
-- **Complete prompt set** (120 prompts across 4 workflows × 30 research questions): 120 structured prompts with English and Chinese variants.
-- **Model outputs**: All 120 generated paragraphs from DeepSeek-chat, saved as individual `.txt` files with prompt identifiers.
-- **Reference extraction results**: 950 extracted references with DOI annotations.
+- **Complete prompt set** (240 prompts across 4 workflows × 30 research questions × 2 models): 120 prompts each for DeepSeek-chat and Qwen3-14B, with English and Chinese variants.
+- **Model outputs**: 240 generated paragraphs (120 for DeepSeek-chat + 120 for Qwen3-14B), saved as individual `.txt` files with prompt identifiers.
+- **Reference extraction results**: 1,974 extracted references (950 from DeepSeek + 1,024 from Qwen3) with DOI annotations.
 - **Verification results**: Complete API verification data including crossref, OpenAlex, and arXiv matching results.
 - **Analysis scripts**: Python scripts for prompt generation, reference extraction, API verification, and statistical analysis.
 

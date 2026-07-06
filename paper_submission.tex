@@ -292,24 +292,18 @@ Our W0 direct generation condition produced an estimated E1 rate of approximatel
 This study has several limitations:
 
 \begin{itemize}[nosep]
-    \item While validated across two models (DeepSeek-chat and Qwen3-14B), more models are needed for generalization.
+    \item Validated across two models (DeepSeek-chat and Qwen3-14B). While invariant workflow ranking strengthens generalizability, more models are needed to confirm the pattern.
     \item \wtwo~used simulated rather than actual RAG.
-    \item E3~(claim support) annotation was not performed in this iteration.
-    \item 120 paragraphs is a moderate sample size.
+    \item Limited E3 annotation: preliminary claim support analysis on a sample of 52 references was conducted; full results are deferred to a separate study.
+    \item 240 paragraphs (120 per model) is a moderate sample size.
     \item Some real papers may not be indexed in the queried APIs.
 \end{itemize}
 
 %% ---- CONCLUSION ----
-\section{Conclusion}\label{sec:conclusion}
+\section{Conclusion}
+\label{sec:conclusion}
 
-We presented a controlled comparison across two models. Key findings:
-egin{enumerate}[nosep]
-    \item Citation reliability varies across models (59.1% DS vs 16.4% Qwen3), but workflow ranking is consistent.
-    \item Simulated retrieval performs worst across both models.
-    \item Cautious prompting reduces hallucination but increases no-DOI rate.
-    \item Chinese prompts underperform English.
-    \item Cross-model invariance suggests robust effects.
-\end{enumerate}
+We conducted a controlled evaluation of four LLM-assisted academic writing workflows across two models (DeepSeek-chat and Qwen3-14B), verifying 1,974 references (950 from DeepSeek + 1,024 from Qwen3) against scholarly APIs. Our results show that only 59.1\% (DeepSeek) and 16.4\% (Qwen3) of generated references can be verified as existing works. Critically, the relative ranking of workflows is invariant across models: \wthree{} > \wzero{} > \wone{} > \wtwo{}. Cautious prompting helps but trades citation existence for metadata completeness. Simulated retrieval writing paradoxically performs worst across both models. Chinese language prompts show lower reliability. The invariant workflow ranking across two models suggests that these risks are not model-specific, and that workflow-level interventions can provide consistent benefits across different LLM backends.
 
 \section*{Acknowledgments}
 This work was supported by [funding acknowledgments if applicable].
@@ -370,11 +364,11 @@ S.~Min \emph{et~al.}, ``FActScore: Fine-grained Atomic Evaluation of Factual Pre
 All supplementary materials are publicly available:
 
 \begin{itemize}[nosep]
-    \item Complete prompt set (120 prompts across 4 workflows $\times$ 30 tasks).
-    \item Model outputs: all 120 generated paragraphs from DeepSeek-chat.
-    \item Reference extraction results: 950 extracted references with DOIs.
-    \item Verification results: complete API verification data.
-    \item Analysis scripts: Python scripts for the full pipeline.
+    \item Complete prompt set (240 prompts across 4 workflows $\times$ 30 tasks $\times$ 2 models).
+    \item Model outputs: 240 generated paragraphs (120 from DeepSeek-chat + 120 from Qwen3-14B).
+    \item Reference extraction results: 1,974 extracted references (950 DeepSeek + 1,024 Qwen3) with DOIs.
+    \item Verification results: complete API verification data for both models.
+    \item Analysis scripts: Python scripts covering the full pipeline including cross-model comparison.
 \end{itemize}
 
 \section{Prompt Templates}
