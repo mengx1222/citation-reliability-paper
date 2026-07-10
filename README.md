@@ -44,8 +44,15 @@ This version of the repository packages the parts that support **inspection, aud
   - [results/extracted_refs_qwen.csv](results/extracted_refs_qwen.csv) for extracted Qwen references
 - Manual annotation starter sample:
   - [data/e3_annotation_sample.csv](data/e3_annotation_sample.csv)
-- Re-analysis utilities added in this repo:
+- Re-analysis and validation utilities:
   - [analysis/summarize_results.py](analysis/summarize_results.py)
+  - [analysis/statistical_analysis.py](analysis/statistical_analysis.py)
+  - [analysis/validate_integrity.py](analysis/validate_integrity.py)
+  - [analysis/rebuild_extracted.py](analysis/rebuild_extracted.py)
+- Execution orchestration:
+  - [code/run_experiment.py](code/run_experiment.py)
+- Output format specification:
+  - [docs/output_format.md](docs/output_format.md)(analysis/summarize_results.py)
   - [analysis/statistical_analysis.py](analysis/statistical_analysis.py)
   - [analysis/summary_metrics.md](analysis/summary_metrics.md)
   - [analysis/rebuild_extracted.py](analysis/rebuild_extracted.py)
@@ -62,6 +69,7 @@ This version of the repository packages the parts that support **inspection, aud
 │   ├── README.md
 │   ├── summarize_results.py
 │   ├── statistical_analysis.py
+│   ├── validate_integrity.py
 │   ├── rebuild_extracted.py
 │   ├── summary_metrics.json
 │   ├── summary_metrics.md
@@ -70,6 +78,7 @@ This version of the repository packages the parts that support **inspection, aud
 │       └── paper_tables.json
 ├── code/
 │   ├── build_prompts.py
+│   ├── run_experiment.py
 │   ├── scoring_rubric.md
 │   └── verify_citations.py
 ├── data/
@@ -77,6 +86,7 @@ This version of the repository packages the parts that support **inspection, aud
 │   ├── prompts.csv
 │   └── task_seed.csv
 ├── docs/
+│   ├── output_format.md
 │   ├── figures/
 │   │   └── resolved-rate-by-workflow.svg
 │   └── methodology.md

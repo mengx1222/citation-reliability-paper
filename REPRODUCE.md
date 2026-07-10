@@ -126,6 +126,24 @@ The following steps are **not** fully bundled today:
 
 That means the current repository is strongest as a **re-analysis and verification package**, not yet as a fully self-contained benchmark runner.
 
+## 3.6 Run Data Integrity Validation
+
+### Command
+
+```bash
+python analysis/validate_integrity.py
+```
+
+### What this checks
+
+- Consistent task IDs across all CSV files
+- Correct workflow names
+- Per-session citation counts within expected bounds
+- Cross-file consistency between extraction and verification tables
+- Total reference count matches manuscript claims
+
+---
+
 ## 6. Reviewer Checklist
 
 If you are reviewing the repo for research credibility, the quickest path is:
