@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T15:30:58.014387+00:00",
+  "generated_at": "2026-07-10T16:48:02.494759+00:00",
   "deepseek": {
     "model": "DeepSeek-chat",
     "overall": {
@@ -1915,5 +1915,283 @@
       "resolved_rate": 16.4,
       "note": "E1 estimated from deep sample: 85% of unresolved DOIs and 93% of no-DOI references classified as hallucinated."
     }
+  },
+  "significance_tests": {
+    "deepseek": {
+      "chi_square": {
+        "test": "Chi-square test of independence",
+        "chi2_statistic": 37.2003,
+        "p_value": 2e-06,
+        "degrees_of_freedom": 6,
+        "sample_size": 950,
+        "cramers_v": 0.1399,
+        "significant_at_005": true
+      },
+      "pairwise_z_tests": [
+        {
+          "workflow_a": "W0_DIRECT",
+          "workflow_b": "W1_CAUTIOUS",
+          "label_a": "W0 Direct",
+          "label_b": "W1 Cautious",
+          "rate_a": 0.6452,
+          "rate_b": 0.5865,
+          "n_a": 248,
+          "n_b": 237,
+          "z_statistic": 1.3281,
+          "p_value": 0.18413,
+          "significant_uncorrected": false,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.1207
+        },
+        {
+          "workflow_a": "W0_DIRECT",
+          "workflow_b": "W2_RETRIEVAL_FIRST",
+          "label_a": "W0 Direct",
+          "label_b": "W2 Simulated Retrieval",
+          "rate_a": 0.6452,
+          "rate_b": 0.5254,
+          "n_a": 248,
+          "n_b": 236,
+          "z_statistic": 2.674,
+          "p_value": 0.007495,
+          "significant_uncorrected": true,
+          "significant_bonferroni": true,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.2437
+        },
+        {
+          "workflow_a": "W0_DIRECT",
+          "workflow_b": "W3_VERIFY_REPAIR",
+          "label_a": "W0 Direct",
+          "label_b": "W3 Verify-and-Repair",
+          "rate_a": 0.6452,
+          "rate_b": 0.6026,
+          "n_a": 248,
+          "n_b": 229,
+          "z_statistic": 0.9587,
+          "p_value": 0.337715,
+          "significant_uncorrected": false,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.0879
+        },
+        {
+          "workflow_a": "W1_CAUTIOUS",
+          "workflow_b": "W2_RETRIEVAL_FIRST",
+          "label_a": "W1 Cautious",
+          "label_b": "W2 Simulated Retrieval",
+          "rate_a": 0.5865,
+          "rate_b": 0.5254,
+          "n_a": 237,
+          "n_b": 236,
+          "z_statistic": 1.3367,
+          "p_value": 0.181324,
+          "significant_uncorrected": false,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.123
+        },
+        {
+          "workflow_a": "W1_CAUTIOUS",
+          "workflow_b": "W3_VERIFY_REPAIR",
+          "label_a": "W1 Cautious",
+          "label_b": "W3 Verify-and-Repair",
+          "rate_a": 0.5865,
+          "rate_b": 0.6026,
+          "n_a": 237,
+          "n_b": 229,
+          "z_statistic": -0.3544,
+          "p_value": 0.723073,
+          "significant_uncorrected": false,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.0328
+        },
+        {
+          "workflow_a": "W2_RETRIEVAL_FIRST",
+          "workflow_b": "W3_VERIFY_REPAIR",
+          "label_a": "W2 Simulated Retrieval",
+          "label_b": "W3 Verify-and-Repair",
+          "rate_a": 0.5254,
+          "rate_b": 0.6026,
+          "n_a": 236,
+          "n_b": 229,
+          "z_statistic": -1.678,
+          "p_value": 0.093342,
+          "significant_uncorrected": false,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.1558
+        }
+      ],
+      "language_effect": {
+        "model": "DeepSeek-chat",
+        "english_rate": 0.6247,
+        "chinese_rate": 0.5536,
+        "gap_pp": 7.1,
+        "z_statistic": 2.2278,
+        "p_value": 0.025894,
+        "significant": true,
+        "cohens_h": 0.1447
+      }
+    },
+    "qwen3": {
+      "chi_square": {
+        "test": "Chi-square test of independence",
+        "chi2_statistic": 47.7351,
+        "p_value": 0.0,
+        "degrees_of_freedom": 6,
+        "sample_size": 1024,
+        "cramers_v": 0.1527,
+        "significant_at_005": true
+      },
+      "pairwise_z_tests": [
+        {
+          "workflow_a": "W0_DIRECT",
+          "workflow_b": "W1_CAUTIOUS",
+          "label_a": "W0 Direct",
+          "label_b": "W1 Cautious",
+          "rate_a": 0.1815,
+          "rate_b": 0.1496,
+          "n_a": 259,
+          "n_b": 254,
+          "z_statistic": 0.9704,
+          "p_value": 0.331846,
+          "significant_uncorrected": false,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.0858
+        },
+        {
+          "workflow_a": "W0_DIRECT",
+          "workflow_b": "W2_RETRIEVAL_FIRST",
+          "label_a": "W0 Direct",
+          "label_b": "W2 Simulated Retrieval",
+          "rate_a": 0.1815,
+          "rate_b": 0.0766,
+          "n_a": 259,
+          "n_b": 261,
+          "z_statistic": 3.5679,
+          "p_value": 0.00036,
+          "significant_uncorrected": true,
+          "significant_bonferroni": true,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.3191
+        },
+        {
+          "workflow_a": "W0_DIRECT",
+          "workflow_b": "W3_VERIFY_REPAIR",
+          "label_a": "W0 Direct",
+          "label_b": "W3 Verify-and-Repair",
+          "rate_a": 0.1815,
+          "rate_b": 0.252,
+          "n_a": 259,
+          "n_b": 250,
+          "z_statistic": -1.9328,
+          "p_value": 0.053261,
+          "significant_uncorrected": false,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.1717
+        },
+        {
+          "workflow_a": "W1_CAUTIOUS",
+          "workflow_b": "W2_RETRIEVAL_FIRST",
+          "label_a": "W1 Cautious",
+          "label_b": "W2 Simulated Retrieval",
+          "rate_a": 0.1496,
+          "rate_b": 0.0766,
+          "n_a": 254,
+          "n_b": 261,
+          "z_statistic": 2.6191,
+          "p_value": 0.008815,
+          "significant_uncorrected": true,
+          "significant_bonferroni": false,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.2333
+        },
+        {
+          "workflow_a": "W1_CAUTIOUS",
+          "workflow_b": "W3_VERIFY_REPAIR",
+          "label_a": "W1 Cautious",
+          "label_b": "W3 Verify-and-Repair",
+          "rate_a": 0.1496,
+          "rate_b": 0.252,
+          "n_a": 254,
+          "n_b": 250,
+          "z_statistic": -2.8712,
+          "p_value": 0.004089,
+          "significant_uncorrected": true,
+          "significant_bonferroni": true,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.2575
+        },
+        {
+          "workflow_a": "W2_RETRIEVAL_FIRST",
+          "workflow_b": "W3_VERIFY_REPAIR",
+          "label_a": "W2 Simulated Retrieval",
+          "label_b": "W3 Verify-and-Repair",
+          "rate_a": 0.0766,
+          "rate_b": 0.252,
+          "n_a": 261,
+          "n_b": 250,
+          "z_statistic": -5.3728,
+          "p_value": 0.0,
+          "significant_uncorrected": true,
+          "significant_bonferroni": true,
+          "bonferroni_alpha": 0.008333,
+          "cohens_h": 0.4908
+        }
+      ],
+      "language_effect": {
+        "model": "Qwen3-14B",
+        "english_rate": 0.186,
+        "chinese_rate": 0.1417,
+        "gap_pp": 4.4,
+        "z_statistic": 1.9145,
+        "p_value": 0.055555,
+        "significant": false,
+        "cohens_h": 0.12
+      }
+    },
+    "cross_model": [
+      {
+        "workflow": "W0 Direct",
+        "deepseek_rate": 0.6452,
+        "qwen_rate": 0.1815,
+        "z_statistic": 10.6186,
+        "p_value": 0.0,
+        "significant": true,
+        "cohens_h": 0.9852
+      },
+      {
+        "workflow": "W1 Cautious",
+        "deepseek_rate": 0.5865,
+        "qwen_rate": 0.1496,
+        "z_statistic": 10.0752,
+        "p_value": 0.0,
+        "significant": true,
+        "cohens_h": 0.9504
+      },
+      {
+        "workflow": "W2 Simulated Retrieval",
+        "deepseek_rate": 0.5254,
+        "qwen_rate": 0.0766,
+        "z_statistic": 11.0137,
+        "p_value": 0.0,
+        "significant": true,
+        "cohens_h": 1.0607
+      },
+      {
+        "workflow": "W3 Verify-and-Repair",
+        "deepseek_rate": 0.6026,
+        "qwen_rate": 0.252,
+        "z_statistic": 7.7673,
+        "p_value": 0.0,
+        "significant": true,
+        "cohens_h": 0.7257
+      }
+    ]
   }
 }

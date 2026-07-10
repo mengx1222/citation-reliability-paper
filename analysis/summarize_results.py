@@ -1,54 +1,29 @@
+"""Generate summary metrics and bar chart from packaged verification CSVs.
+
+Refactored to use shared constants from analysis/common.py.
+"""
+
 from __future__ import annotations
 
 import csv
 import json
-import re
-from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-
-ROOT = Path(__file__).resolve().parents[1]
-TASKS_CSV = ROOT / "data" / "task_seed.csv"
-DEEPSEEK_CSV = ROOT / "results" / "verified_refs_merged.csv"
-QWEN_CSV = ROOT / "results" / "verified_refs_qwen.csv"
-SUMMARY_MD = ROOT / "analysis" / "summary_metrics.md"
-SUMMARY_JSON = ROOT / "analysis" / "summary_metrics.json"
-SVG_OUT = ROOT / "docs" / "figures" / "resolved-rate-by-workflow.svg"
-
-WORKFLOW_ORDER = [
-    "W0_DIRECT",
-    "W1_CAUTIOUS",
-    "W2_RETRIEVAL_FIRST",
-    "W3_VERIFY_REPAIR",
-]
-
-WORKFLOW_LABELS = {
-    "W0_DIRECT": "W0 Direct",
-    "W1_CAUTIOUS": "W1 Cautious",
-    "W2_RETRIEVAL_FIRST": "W2 Simulated Retrieval",
-    "W3_VERIFY_REPAIR": "W3 Verify-and-Repair",
-}
-
-MODEL_FILES = {
-    "deepseek-chat": DEEPSEEK_CSV,
-    "qwen3-14b": QWEN_CSV,
-}
-
-MODEL_LABELS = {
-    "deepseek-chat": "DeepSeek-chat",
-    "qwen3-14b": "Qwen3-14B",
-}
-
-MODEL_COLORS = {
-    "deepseek-chat": "#1f77b4",
-    "qwen3-14b": "#f28e2b",
-}
-
-SOURCE_RE = re.compile(
-    r"^(?P<task_id>T\d+)_(?P<workflow>W\d+_[A-Z_]+)__"
-    r"(?P<model>[^.]+)\.txt$",
-    re.IGNORECASE,
+from common import (
+    MODEL_COLORS,
+    MODEL_FILES,
+    MODEL_LABELS,
+    OUTPUT_DIR,
+    SUMMARY_JSON,
+    SUMMARY_MD,
+    SVG_OUT,
+    TASKS_CSV,
+    WORKFLOW_LABELS,
+    WORKFLOW_ORDER,
+    load_task_languages,
+    normalize_status,
+    parse_source_name,
 )
 
 
@@ -56,34 +31,8 @@ def pct(numerator: int, denominator: int) -> float:
     return (numerator / denominator * 100.0) if denominator else 0.0
 
 
-def load_task_languages() -> dict[str, str]:
-    task_languages: dict[str, str] = {}
-    with TASKS_CSV.open("r", encoding="utf-8-sig", newline="") as f:
-        for row in csv.DictReader(f):
-            task_languages[row["task_id"]] = row["language"]
-    return task_languages
-
-
 def empty_counter() -> dict[str, int]:
     return {"total": 0, "resolved": 0, "unresolved": 0, "no_doi": 0}
-
-
-def normalize_status(raw_status: str) -> str:
-    status = (raw_status or "").strip().lower()
-    if status in {"resolved", "unresolved", "no_doi"}:
-        return status
-    return "unresolved"
-
-
-def parse_source_name(source_name: str) -> tuple[str, str, str]:
-    match = SOURCE_RE.match(source_name.strip())
-    if not match:
-        raise ValueError(f"Unrecognized source naming pattern: {source_name}")
-    return (
-        match.group("task_id"),
-        match.group("workflow").upper(),
-        match.group("model").lower(),
-    )
 
 
 def add_status(bucket: dict[str, int], status: str) -> None:
@@ -93,9 +42,25 @@ def add_status(bucket: dict[str, int], status: str) -> None:
     bucket[status] += 1
 
 
-def collect_summary() -> dict[str, object]:
+def with_rates(counter: dict[str, int]) -> dict[str, float | int]:
+    total = counter["total"]
+    resolved = counter["resolved"]
+    unresolved = counter["unresolved"]
+    no_doi = counter["no_doi"]
+    return {
+        "total": total,
+        "resolved": resolved,
+        "unresolved": unresolved,
+        "no_doi": no_doi,
+        "resolved_rate": round(pct(resolved, total), 1),
+        "unresolved_rate": round(pct(unresolved, total), 1),
+        "no_doi_rate": round(pct(no_doi, total), 1),
+    }
+
+
+def collect_summary() -> dict:
     task_languages = load_task_languages()
-    summary: dict[str, object] = {
+    summary: dict = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "models": {},
     }
@@ -130,23 +95,7 @@ def collect_summary() -> dict[str, object]:
     return summary
 
 
-def with_rates(counter: dict[str, int]) -> dict[str, float | int]:
-    total = counter["total"]
-    resolved = counter["resolved"]
-    unresolved = counter["unresolved"]
-    no_doi = counter["no_doi"]
-    return {
-        "total": total,
-        "resolved": resolved,
-        "unresolved": unresolved,
-        "no_doi": no_doi,
-        "resolved_rate": round(pct(resolved, total), 1),
-        "unresolved_rate": round(pct(unresolved, total), 1),
-        "no_doi_rate": round(pct(no_doi, total), 1),
-    }
-
-
-def render_markdown(summary: dict[str, object]) -> str:
+def render_markdown(summary: dict) -> str:
     models = summary["models"]
     lines: list[str] = []
     lines.append("# Summary Metrics")
@@ -176,7 +125,9 @@ def render_markdown(summary: dict[str, object]) -> str:
     lines.append("")
     lines.append("## By Workflow")
     lines.append("")
-    lines.append("| Model | Workflow | Total Refs | Resolved | Unresolved | No DOI | Resolved Rate |")
+    lines.append(
+        "| Model | Workflow | Total Refs | Resolved | Unresolved | No DOI | Resolved Rate |"
+    )
     lines.append("|---|---|---:|---:|---:|---:|---:|")
     for model_key in MODEL_FILES:
         workflow_stats = models[model_key]["workflow"]
@@ -197,8 +148,10 @@ def render_markdown(summary: dict[str, object]) -> str:
     lines.append("")
     lines.append("## By Language")
     lines.append("")
-    lines.append("| Model | Language | Total Refs | Resolved | Unresolved | No DOI | Resolved Rate |")
-    lines.append("|---|---|---:|---:|---:|---:|---:|")
+    lines.append(
+        "| Model | Language | Total Refs | Resolved | Unresolved | No DOI | Resolved Rate |"
+    )
+    lines.append("|---|---:|---:|---:|---:|---:|")
     for model_key in MODEL_FILES:
         language_stats = models[model_key]["language"]
         for language in ("en", "zh"):
@@ -225,7 +178,7 @@ def render_markdown(summary: dict[str, object]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def generate_svg(summary: dict[str, object]) -> str:
+def generate_svg(summary: dict) -> str:
     models = summary["models"]
     rates = {
         model_key: [
@@ -342,9 +295,8 @@ def generate_svg(summary: dict[str, object]) -> str:
     return "\n".join(parts) + "\n"
 
 
-def write_outputs(summary: dict[str, object]) -> None:
-    SUMMARY_MD.parent.mkdir(parents=True, exist_ok=True)
-    SUMMARY_JSON.parent.mkdir(parents=True, exist_ok=True)
+def write_outputs(summary: dict) -> None:
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     SVG_OUT.parent.mkdir(parents=True, exist_ok=True)
 
     SUMMARY_MD.write_text(render_markdown(summary), encoding="utf-8")

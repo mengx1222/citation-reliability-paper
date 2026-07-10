@@ -2,6 +2,26 @@
 
 This document separates what can be reproduced **immediately from packaged artifacts** from what requires **new model generations**.
 
+## 0. Quick Start (All Steps)
+
+```bash
+make all
+```
+
+Or equivalently:
+
+```bash
+python analysis/summarize_results.py
+python analysis/statistical_analysis.py
+python analysis/sensitivity_analysis.py
+python analysis/visualizations.py
+python analysis/validate_integrity.py
+```
+
+This regenerates all summary tables, paper tables with significance tests, sensitivity analysis, visualizations, and data integrity checks.
+
+> **Note**: `code/build_prompts.py` and `code/verify_citations.py` require external API access or raw model outputs. See sections below for details.
+
 ## 1. Reproduce The Packaged Analysis
 
 This is the fastest way to audit the current repository state.

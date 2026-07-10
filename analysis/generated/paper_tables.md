@@ -12,6 +12,32 @@ Auto-generated from verification CSV files. Run `python analysis/statistical_ana
 | W3 Verify-and-Repair | 229 | 138 | 40 | 51 | 60.3% | [53.8%, 66.4%] |
 | **Overall** | **950** | **561** | **202** | **187** | **59.1%** | **[55.9%, 62.1%]** |
 
+### Statistical Significance Tests
+
+#### Chi-square Test: Workflow × Verification Status
+
+- χ²(6) = 37.2003, p = 2e-06 (✓ significant at α = 0.05)
+- Cramér's V = 0.1399 (effect size)
+  - Interpretation: small association
+
+#### Pairwise Workflow Comparisons (Two-Proportion z-test)
+
+| Comparison | Rate A | Rate B | z | p-value | Significant (α=0.05) | Bonferroni sig. | Cohen's h |
+|---|---:|---:|---:|---:|:---:|:---:|---:|
+| W0 Direct vs W1 Cautious | 64.5% | 58.7% | 1.3281 | 0.18413 | ✗ | ✗ | 0.1207 |
+| W0 Direct vs W2 Simulated Retrieval | 64.5% | 52.5% | 2.674 | 0.007495 | ✓ | ✓ | 0.2437 |
+| W0 Direct vs W3 Verify-and-Repair | 64.5% | 60.3% | 0.9587 | 0.337715 | ✗ | ✗ | 0.0879 |
+| W1 Cautious vs W2 Simulated Retrieval | 58.7% | 52.5% | 1.3367 | 0.181324 | ✗ | ✗ | 0.123 |
+| W1 Cautious vs W3 Verify-and-Repair | 58.7% | 60.3% | -0.3544 | 0.723073 | ✗ | ✗ | 0.0328 |
+| W2 Simulated Retrieval vs W3 Verify-and-Repair | 52.5% | 60.3% | -1.678 | 0.093342 | ✗ | ✗ | 0.1558 |
+
+#### Language Effect Significance
+
+- Model: DeepSeek-chat
+- English resolved rate: 62.5%, Chinese: 55.4% (gap: 7.1 pp)
+- z = 2.2278, p = 0.025894 (✓ significant at α = 0.05)
+- Cohen's h = 0.1447 (effect size)
+
 ### Table 2: DeepSeek-chat  —  Language Effect
 
 | Language | Total Refs | Resolved | Unresolved | No DOI | Resolved Rate | 95% Wilson CI |
@@ -30,6 +56,32 @@ Auto-generated from verification CSV files. Run `python analysis/statistical_ana
 | W3 Verify-and-Repair | 250 | 63 | 97 | 90 | 25.2% | [20.2%, 30.9%] |
 | **Overall** | **1024** | **168** | **477** | **379** | **16.4%** | **[14.3%, 18.8%]** |
 
+### Statistical Significance Tests
+
+#### Chi-square Test: Workflow × Verification Status
+
+- χ²(6) = 47.7351, p = 0.0 (✓ significant at α = 0.05)
+- Cramér's V = 0.1527 (effect size)
+  - Interpretation: small association
+
+#### Pairwise Workflow Comparisons (Two-Proportion z-test)
+
+| Comparison | Rate A | Rate B | z | p-value | Significant (α=0.05) | Bonferroni sig. | Cohen's h |
+|---|---:|---:|---:|---:|:---:|:---:|---:|
+| W0 Direct vs W1 Cautious | 18.1% | 15.0% | 0.9704 | 0.331846 | ✗ | ✗ | 0.0858 |
+| W0 Direct vs W2 Simulated Retrieval | 18.1% | 7.7% | 3.5679 | 0.00036 | ✓ | ✓ | 0.3191 |
+| W0 Direct vs W3 Verify-and-Repair | 18.1% | 25.2% | -1.9328 | 0.053261 | ✗ | ✗ | 0.1717 |
+| W1 Cautious vs W2 Simulated Retrieval | 15.0% | 7.7% | 2.6191 | 0.008815 | ✓ | ✗ | 0.2333 |
+| W1 Cautious vs W3 Verify-and-Repair | 15.0% | 25.2% | -2.8712 | 0.004089 | ✓ | ✓ | 0.2575 |
+| W2 Simulated Retrieval vs W3 Verify-and-Repair | 7.7% | 25.2% | -5.3728 | 0.0 | ✓ | ✓ | 0.4908 |
+
+#### Language Effect Significance
+
+- Model: Qwen3-14B
+- English resolved rate: 18.6%, Chinese: 14.2% (gap: 4.4 pp)
+- z = 1.9145, p = 0.055555 (✗ not significant at α = 0.05)
+- Cohen's h = 0.12 (effect size)
+
 ### Table 2: Qwen3-14B  —  Language Effect
 
 | Language | Total Refs | Resolved | Unresolved | No DOI | Resolved Rate | 95% Wilson CI |
@@ -47,13 +99,21 @@ Auto-generated from verification CSV files. Run `python analysis/statistical_ana
 | W2 Simulated Retrieval | 124/236 (52.5%) | [46.2%, 58.8%] | 20/261 (7.7%) | [5.0%, 11.5%] | +44.8 pp |
 | W3 Verify-and-Repair | 138/229 (60.3%) | [53.8%, 66.4%] | 63/250 (25.2%) | [20.2%, 30.9%] | +35.1 pp |
 
+#### Cross-Model Significance (DeepSeek vs Qwen3 per Workflow)
+
+| Workflow | DeepSeek | Qwen3 | z | p-value | Significant | Cohen's h |
+|---|---:|---:|---:|---:|:---:|---:|
+| W0 Direct | 64.5% | 18.1% | 10.6186 | 0.0 | ✓ | 0.9852 |
+| W1 Cautious | 58.7% | 15.0% | 10.0752 | 0.0 | ✓ | 0.9504 |
+| W2 Simulated Retrieval | 52.5% | 7.7% | 11.0137 | 0.0 | ✓ | 1.0607 |
+| W3 Verify-and-Repair | 60.3% | 25.2% | 7.7673 | 0.0 | ✓ | 0.7257 |
+
 ### Table 4: Estimated E1 (Hallucinated) Rates
 
 | Model | Total Refs | Resolved | Est. E1 | Est. E1 Rate | Uncertain | Resolved Rate |
 |------|----------:|--------:|-------:|-------------:|---------:|---------------:|
 | DeepSeek-chat | 950 | 561 | 345 | 36.3% | 43 | 59.1% |
 | Qwen3-14B | 1024 | 168 | 757 | 73.9% | 98 | 16.4% |
-
 
 ### Per-Session Variation: DeepSeek-chat
 
@@ -342,6 +402,3 @@ The current E3 claim-support sample has fewer than 60 entries. To strengthen the
 1. Use `analysis/summarize_results.py` to identify which references are `resolved` (the candidate pool).
 2. For each workflow × model × language cell, randomly select 15 resolved references where the generated claim is available.
 3. For each selected reference, annotate the `support_label` using the rubric in `code/scoring_rubric.md`.
-
-Required annotation fields:
-- `workflow`, `language`, `pid`, `citation_number`, `verification_status`, `generated_claim`, `reference_text`, `support_label`, `notes`

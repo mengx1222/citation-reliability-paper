@@ -129,7 +129,9 @@ Each was paired with a structured output format specifying the [Body] and [Refer
 
 \subsection{Model and Parameters}
 
-All prompts were sent to the DeepSeek-chat API (accessed July 6, 2026) with temperature 0.7 and max\_tokens 2048. Each prompt was a single user message with no system prompt. Rate limiting was applied with 0.5-second intervals.\n\nThe same experiment was repeated using Qwen3-14B (via SiliconFlow API) with identical prompts, temperature, and token limits.
+All prompts were sent to the DeepSeek-chat API (accessed July 6, 2026) with temperature 0.7 and max\_tokens 2048. Each prompt was a single user message with no system prompt. Rate limiting was applied with 0.5-second intervals.
+
+The same experiment was repeated using Qwen3-14B (via SiliconFlow API) with identical prompts, temperature, and token limits.
 
 \subsection{Error Taxonomy}
 
@@ -252,9 +254,9 @@ Title-based verification of no-DOI references in \wone~(sampled 30 of 64) found 
 
 To assess whether workflow effects generalize, we repeated the experiment using Qwen3-14B.
 
-egin{table}[ht]
+\begin{table}[ht]
 \centering
-egin{tabular}{lrrr}
+\begin{tabular}{lrrr}
 	oprule
 	extbf{Workflow} & 	extbf{DS Resolved} & 	extbf{Qwen3 Resolved} & 	extbf{Gap} \
 \midrule
@@ -262,7 +264,7 @@ To assess whether workflow effects generalize, we repeated the experiment using 
 \wone (Cautious) & 58.6% (139/237) & 15.0% (38/254) & +43.7% \
 \wtwo (Retrieval) & 52.5% (124/236) & 7.7% (20/261) & +44.9% \
 \wthree (Verify) & 60.3% (138/229) & 25.2% (63/250) & +35.1% \
-ottomrule
+\bottomrule
 \end{tabular}
 \caption{Cross-model verification results.}
 \label{tab:crossmodel}
@@ -421,7 +423,7 @@ Chinese prompt variants follow the same structure with Chinese-translated resear
 \section{Model Configuration}
 
 	extbf{DeepSeek-chat (primary model)}
-egin{itemize}
+\begin{itemize}
     \item Model: deepseek-chat
     \item Temperature: 0.7
     \item Max tokens: 2048
@@ -429,7 +431,7 @@ Chinese prompt variants follow the same structure with Chinese-translated resear
 \end{itemize}
 
 	extbf{Qwen3-14B (cross-validation model)}
-egin{itemize}
+\begin{itemize}
     \item Model: Qwen/Qwen3-14B
     \item Temperature: 0.7
     \item Max tokens: 2048
