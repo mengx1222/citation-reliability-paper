@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Citation Reliability in LLM-Assisted Academic Writing"
+message: >-
+  If you use this software or the empirical results in your
+  own work, please cite the associated manuscript and this
+  repository.
+type: dataset
+authors:
+  - name: "Max (Mengxuan)"
+    given-names: "Mengxuan"
+    family-names: "Max"
+repository-code: "https://github.com/mengx/citation-reliability-paper"
+abstract: >-
+  An empirical study evaluating citation reliability in LLM-assisted
+  academic writing across four workflows, two languages, and two models.
+  Includes prompts, verification data, manuscript artifacts, and a
+  reusable verification pipeline.
+keywords:
+  - "large language models"
+  - "citation hallucination"
+  - "academic writing"
+license: "CC-BY-4.0"

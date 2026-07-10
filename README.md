@@ -1,117 +1,132 @@
 # Citation Reliability in LLM-Assisted Academic Writing
 
-[English](#english) | [中文](#中文)
+An empirical research repository for auditing how often LLM-generated academic citations can be verified against open scholarly metadata sources.
 
----
+## Why This Repo Exists
 
-<a name="english"></a>
+LLM-assisted writing tools can produce fluent related-work paragraphs while quietly fabricating citations, mixing metadata across real papers, or omitting enough fields to make references hard to verify. This project studies that failure mode as a **workflow reliability** problem rather than a single-model anecdote.
 
-## English
+Instead of asking only "does model X hallucinate?", this repo compares four writing workflows, two languages, and two models under a shared verification pipeline.
 
-### Experiment Summary
+## At A Glance
 
-This workspace contains a complete empirical study evaluating citation reliability in LLM-assisted academic writing.
+- **30 research questions**
+- **4 writing workflows**
+- **2 languages**: English and Chinese
+- **2 models**: DeepSeek-chat and Qwen3-14B
+- **240 generated paragraphs**
+- **1,974 extracted references**
+- **Verification sources**: Crossref, OpenAlex, arXiv
 
-- **Models**: DeepSeek-chat (primary), Qwen3-14B (cross-validation)
-- **Task**: 30 research questions × 4 workflows × 2 languages × 2 models = 240 paragraphs
-- **Extracted references**: 1,974 (950 DeepSeek + 1,024 Qwen3)
-- **Verified against**: Crossref, OpenAlex, arXiv APIs
+### Main Findings
 
-### Key Results
+- DeepSeek-chat resolved **59.1%** of generated references in the packaged verification table.
+- Qwen3-14B resolved **16.4%** of generated references in the packaged verification table.
+- Across the two tested models, **W0 Direct** and **W3 Verify-and-Repair** emerged as the top two workflows overall.
+- **W2 Simulated Retrieval** was the weakest workflow in both tested models.
+- Chinese prompts showed lower verification rates than English prompts in most conditions.
 
-| Metric | Value |
-|--------|-------|
-| Verified genuine | 561/950 (59.1%) |
-| Estimated hallucinated (E1) | ~363/950 (38.2%) |
-| Best workflow | W1 Cautious Prompt (E1 ~13%) |
-| Worst workflow | W2 Simulated Retrieval (E1 ~31%) |
-| Language gap | English 62.4% vs Chinese 55.5% resolved |
+![Resolved Rate by Workflow](docs/figures/resolved-rate-by-workflow.svg)
 
-### Repository Structure
+## What Is Included
 
-```
-├── paper_submission.tex           # LaTeX source (arXiv/journal-ready)
-├── paper_submission.md            # Full English Markdown version
-├── cover_letter.md                # Submission cover letter
-├── seed_sources.md                # Core literature seeds
-├── data/
-│   ├── prompts.csv                # 120 experiment prompts (4 workflows × 30 tasks)
-│   └── task_seed.csv              # 30 research questions
+This version of the repository packages the parts that support **inspection, audit, and downstream analysis**:
+
+- The manuscript in Markdown and LaTeX:
+  - [paper_submission.md](paper_submission.md)
+  - [paper_submission.tex](paper_submission.tex)
+- Experimental task seeds and generated prompts:
+  - [data/task_seed.csv](data/task_seed.csv)
+  - [data/prompts.csv](data/prompts.csv)
+- Verification results:
+  - [results/verified_refs_merged.csv](results/verified_refs_merged.csv) for DeepSeek-chat
+  - [results/verified_refs_qwen.csv](results/verified_refs_qwen.csv) for Qwen3-14B
+  - [results/extracted_refs_qwen.csv](results/extracted_refs_qwen.csv) for extracted Qwen references
+- Manual annotation starter sample:
+  - [data/e3_annotation_sample.csv](data/e3_annotation_sample.csv)
+- Re-analysis utilities added in this repo:
+  - [analysis/summarize_results.py](analysis/summarize_results.py)
+  - [analysis/summary_metrics.md](analysis/summary_metrics.md)
+
+## Repository Guide
+
+```text
+.
+├── analysis/
+│   ├── README.md
+│   ├── summarize_results.py
+│   ├── summary_metrics.json
+│   └── summary_metrics.md
 ├── code/
-│   ├── verify_citations.py        # Citation extraction and API verification pipeline
-│   ├── build_prompts.py           # Prompt generation script
-│   └── scoring_rubric.md          # Human annotation rubric for claim support
-└── results/
-    └── verified_refs_merged.csv   # 950 verified references (326 KB)
-```
-
-### How to Reproduce
-
-1. Run `code/build_prompts.py` to generate prompts
-2. Send prompts to DeepSeek (or other LLM) API
-3. Run `code/verify_citations.py` to extract and verify references
-4. Statistical analysis from merged results
-
-### Publication
-
-Manuscript prepared for submission. Target venues: *Applied Intelligence* / arXiv preprint.
-
----
-
-<a name="中文"></a>
-
-## 中文
-
-### 实验概述
-
-本研究对大语言模型辅助学术写作中的引用可靠性进行了受控实证评估。
-
-- **模型**: DeepSeek-chat (主模型), Qwen3-14B (交叉验证)
-- **任务**: 30个研究问题 × 4种工作流 × 2种语言 × 2个模型 = 240段输出
-- **提取引用**: 1,974条 (950条 DeepSeek + 1,024条 Qwen3)
-- **核验来源**: Crossref、OpenAlex、arXiv API
-
-### 核心结果
-
-| 指标 | 数值 |
-|------|------|
-| 验证为真实 | 561/950 (59.1%) |
-| 估算幻觉引用 (E1) | ~363/950 (38.2%) |
-| 最佳工作流 | W1 谨慎提示 (E1 ~13%) |
-| 最差工作流 | W2 模拟检索 (E1 ~31%) |
-| 语言差异 | 英文 62.4% vs 中文 55.5% resolved |
-
-### 仓库结构
-
-```
-├── paper_submission.tex           # LaTeX 源文件（arXiv/期刊可直接编译）
-├── paper_submission.md            # 英文 Markdown 完整版
-├── cover_letter.md                # 投稿推荐信
-├── seed_sources.md                # 核心文献种子
+│   ├── build_prompts.py
+│   ├── scoring_rubric.md
+│   └── verify_citations.py
 ├── data/
-│   ├── prompts.csv                # 120 条实验 prompts
-│   └── task_seed.csv              # 30 个研究问题
-├── code/
-│   ├── verify_citations.py        # 引用核验管线
-│   ├── build_prompts.py           # prompt 生成脚本
-│   └── scoring_rubric.md          # 人工评分规则
-└── results/
-    └── verified_refs_merged.csv   # 950 条核验结果 (326 KB)
+│   ├── e3_annotation_sample.csv
+│   ├── prompts.csv
+│   └── task_seed.csv
+├── docs/
+│   ├── figures/
+│   │   └── resolved-rate-by-workflow.svg
+│   └── methodology.md
+├── results/
+│   ├── extracted_refs_qwen.csv
+│   ├── qwen_output_count.txt
+│   ├── verified_refs_merged.csv
+│   └── verified_refs_qwen.csv
+├── REPRODUCE.md
+├── paper_submission.md
+└── paper_submission.tex
 ```
 
-### 如何复现
+## Quick Start
 
-1. 运行 `code/build_prompts.py` 生成 prompts
-2. 将 prompts 发送至 DeepSeek（或其他 LLM）API
-3. 运行 `code/verify_citations.py` 提取并核验引用
-4. 对合并结果进行统计分析
+If you want to understand the project quickly without rerunning model APIs:
 
-### 发表状态
+1. Read the project framing in [docs/methodology.md](docs/methodology.md).
+2. Inspect the manuscript in [paper_submission.md](paper_submission.md).
+3. Regenerate the packaged summary tables and figure:
 
-稿件准备中。目标期刊: *Applied Intelligence* / arXiv 预印本。
+```bash
+python analysis/summarize_results.py
+```
 
----
+4. Open [analysis/summary_metrics.md](analysis/summary_metrics.md) for a compact metrics view.
 
-## License
+## Reproduction Scope
 
-This project is available for academic use.
+This repo currently supports two useful levels of reproduction:
+
+1. **Audit the packaged results** using the included CSV files and summary script.
+2. **Rerun the verification pipeline** on your own model outputs using [code/verify_citations.py](code/verify_citations.py).
+
+The repo does **not** yet bundle a full provider-specific generation client for recreating all 240 model outputs from scratch. That step depends on external API credentials and model access. See [REPRODUCE.md](REPRODUCE.md) for the exact boundary between what is included now and what must be supplied by the reproducer.
+
+## Method Notes
+
+- The packaged result tables use coarse statuses such as `resolved`, `unresolved`, and `no_doi`.
+- The manuscript discusses stricter error categories including existence errors, metadata mismatch, and claim-support issues.
+- For that reason, treat the CSV verification tables as the **first-pass evidence layer**, not the full epistemic judgment of citation quality.
+
+More detail: [docs/methodology.md](docs/methodology.md)
+
+## Suggested Positioning
+
+If you are browsing this repo for research or hiring evaluation, the strongest interpretation is:
+
+> A small but complete empirical framework for measuring citation reliability in LLM-assisted academic writing, with prompts, verification data, manuscript artifacts, and a reusable verification script.
+
+### License
+
+This repository is shared under [CC BY 4.0](LICENSE). The manuscript, experimental data, and analysis scripts are open for use with attribution. Model-generated content and third-party dependencies carry their own licenses.
+
+
+## Chinese Summary
+
+这个仓库更适合被理解为一个“**大模型学术引用可靠性评估与自动核验框架**”，而不只是论文附件。
+
+- 它的核心贡献是把“引用幻觉”问题做成了可比较的工作流实验。
+- 当前仓库已经包含论文、prompt、核验结果、标注样本和复盘脚本。
+- 当前版本更偏“可审计、可复盘”，还不是完整的一键式全流程复现仓库。
+
+如果你想继续把它打磨成更强的开源项目，建议下一步优先补原始模型输出、完整统计脚本和一个真实检索 baseline。
