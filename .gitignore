@@ -23,3 +23,10 @@ docs/figures/resolved-rate-by-workflow.svg
 # Editor artifacts
 .codebuddy/
 .workbuddy/
+# Temp scripts used during repo maintenance
+_update_*.py
+_tmpgit.py
+_tmpgitignore.py
+_tmp*.py
+_tmp*.txt
+_msg.txt

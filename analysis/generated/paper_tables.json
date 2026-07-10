@@ -1,0 +1,1919 @@
+{
+  "generated_at": "2026-07-10T15:30:58.014387+00:00",
+  "deepseek": {
+    "model": "DeepSeek-chat",
+    "overall": {
+      "total": 950,
+      "resolved": 561,
+      "unresolved": 202,
+      "no_doi": 187,
+      "resolved_rate": 59.1,
+      "ci_lo": 55.9,
+      "ci_hi": 62.1,
+      "resolved_pct_str": "59.1%",
+      "ci_str": "[55.9%, 62.1%]"
+    },
+    "workflow": {
+      "W0_DIRECT": {
+        "total": 248,
+        "resolved": 160,
+        "unresolved": 51,
+        "no_doi": 37,
+        "resolved_rate": 64.5,
+        "ci_lo": 58.4,
+        "ci_hi": 70.2,
+        "resolved_pct_str": "64.5%",
+        "ci_str": "[58.4%, 70.2%]"
+      },
+      "W1_CAUTIOUS": {
+        "total": 237,
+        "resolved": 139,
+        "unresolved": 34,
+        "no_doi": 64,
+        "resolved_rate": 58.6,
+        "ci_lo": 52.3,
+        "ci_hi": 64.7,
+        "resolved_pct_str": "58.6%",
+        "ci_str": "[52.3%, 64.7%]"
+      },
+      "W2_RETRIEVAL_FIRST": {
+        "total": 236,
+        "resolved": 124,
+        "unresolved": 77,
+        "no_doi": 35,
+        "resolved_rate": 52.5,
+        "ci_lo": 46.2,
+        "ci_hi": 58.8,
+        "resolved_pct_str": "52.5%",
+        "ci_str": "[46.2%, 58.8%]"
+      },
+      "W3_VERIFY_REPAIR": {
+        "total": 229,
+        "resolved": 138,
+        "unresolved": 40,
+        "no_doi": 51,
+        "resolved_rate": 60.3,
+        "ci_lo": 53.8,
+        "ci_hi": 66.4,
+        "resolved_pct_str": "60.3%",
+        "ci_str": "[53.8%, 66.4%]"
+      }
+    },
+    "language": {
+      "en": {
+        "total": 493,
+        "resolved": 308,
+        "unresolved": 86,
+        "no_doi": 99,
+        "resolved_rate": 62.5,
+        "ci_lo": 58.1,
+        "ci_hi": 66.6,
+        "resolved_pct_str": "62.5%",
+        "ci_str": "[58.1%, 66.6%]"
+      },
+      "zh": {
+        "total": 457,
+        "resolved": 253,
+        "unresolved": 116,
+        "no_doi": 88,
+        "resolved_rate": 55.4,
+        "ci_lo": 50.8,
+        "ci_hi": 59.9,
+        "resolved_pct_str": "55.4%",
+        "ci_str": "[50.8%, 59.9%]"
+      }
+    },
+    "sessions": [
+      {
+        "task_id": "T001",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T001",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T001",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T001",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 5
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 2
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 7
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 12,
+        "resolved": 10
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 11,
+        "resolved": 6
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 13,
+        "resolved": 11
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 14,
+        "resolved": 7
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 13,
+        "resolved": 6
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 15,
+        "resolved": 13
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 15,
+        "resolved": 11
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 11,
+        "resolved": 8
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 13,
+        "resolved": 7
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 14,
+        "resolved": 10
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 11,
+        "resolved": 6
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 11,
+        "resolved": 6
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 11,
+        "resolved": 8
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 11,
+        "resolved": 6
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 15,
+        "resolved": 14
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 13,
+        "resolved": 12
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 7,
+        "resolved": 4
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 6
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 7,
+        "resolved": 2
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 9,
+        "resolved": 2
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 5
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 6,
+        "resolved": 5
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 4
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 11,
+        "resolved": 5
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 8,
+        "resolved": 5
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 6,
+        "resolved": 5
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 5
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 7,
+        "resolved": 3
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 2
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 2
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 7
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 7,
+        "resolved": 4
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 5
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 7,
+        "resolved": 6
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 6,
+        "resolved": 5
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 5
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 6,
+        "resolved": 5
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 1
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 20,
+        "resolved": 6
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 4
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 5
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 9,
+        "resolved": 4
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 3
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 7,
+        "resolved": 6
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 5
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 6,
+        "resolved": 5
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 5
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 6
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 7,
+        "resolved": 6
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 7,
+        "resolved": 4
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 7,
+        "resolved": 2
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 4
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 9,
+        "resolved": 4
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 6
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 7,
+        "resolved": 6
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 7
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 7,
+        "resolved": 2
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 6
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 11,
+        "resolved": 5
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 2
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 8,
+        "resolved": 6
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 6,
+        "resolved": 5
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 5,
+        "resolved": 3
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 7,
+        "resolved": 5
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 5,
+        "resolved": 3
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 7,
+        "resolved": 4
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 7,
+        "resolved": 3
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 6,
+        "resolved": 1
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 4
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      }
+    ]
+  },
+  "qwen3-14b": {
+    "model": "Qwen3-14B",
+    "overall": {
+      "total": 1024,
+      "resolved": 168,
+      "unresolved": 477,
+      "no_doi": 379,
+      "resolved_rate": 16.4,
+      "ci_lo": 14.3,
+      "ci_hi": 18.8,
+      "resolved_pct_str": "16.4%",
+      "ci_str": "[14.3%, 18.8%]"
+    },
+    "workflow": {
+      "W0_DIRECT": {
+        "total": 259,
+        "resolved": 47,
+        "unresolved": 137,
+        "no_doi": 75,
+        "resolved_rate": 18.1,
+        "ci_lo": 13.9,
+        "ci_hi": 23.3,
+        "resolved_pct_str": "18.1%",
+        "ci_str": "[13.9%, 23.3%]"
+      },
+      "W1_CAUTIOUS": {
+        "total": 254,
+        "resolved": 38,
+        "unresolved": 99,
+        "no_doi": 117,
+        "resolved_rate": 15.0,
+        "ci_lo": 11.1,
+        "ci_hi": 19.9,
+        "resolved_pct_str": "15.0%",
+        "ci_str": "[11.1%, 19.9%]"
+      },
+      "W2_RETRIEVAL_FIRST": {
+        "total": 261,
+        "resolved": 20,
+        "unresolved": 144,
+        "no_doi": 97,
+        "resolved_rate": 7.7,
+        "ci_lo": 5.0,
+        "ci_hi": 11.5,
+        "resolved_pct_str": "7.7%",
+        "ci_str": "[5.0%, 11.5%]"
+      },
+      "W3_VERIFY_REPAIR": {
+        "total": 250,
+        "resolved": 63,
+        "unresolved": 97,
+        "no_doi": 90,
+        "resolved_rate": 25.2,
+        "ci_lo": 20.2,
+        "ci_hi": 30.9,
+        "resolved_pct_str": "25.2%",
+        "ci_str": "[20.2%, 30.9%]"
+      }
+    },
+    "language": {
+      "en": {
+        "total": 516,
+        "resolved": 96,
+        "unresolved": 244,
+        "no_doi": 176,
+        "resolved_rate": 18.6,
+        "ci_lo": 15.5,
+        "ci_hi": 22.2,
+        "resolved_pct_str": "18.6%",
+        "ci_str": "[15.5%, 22.2%]"
+      },
+      "zh": {
+        "total": 508,
+        "resolved": 72,
+        "unresolved": 233,
+        "no_doi": 203,
+        "resolved_rate": 14.2,
+        "ci_lo": 11.4,
+        "ci_hi": 17.5,
+        "resolved_pct_str": "14.2%",
+        "ci_str": "[11.4%, 17.5%]"
+      }
+    },
+    "sessions": [
+      {
+        "task_id": "T001",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T001",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 8,
+        "resolved": 0
+      },
+      {
+        "task_id": "T001",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T001",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 7,
+        "resolved": 0
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 10,
+        "resolved": 1
+      },
+      {
+        "task_id": "T002",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 6,
+        "resolved": 1
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 7,
+        "resolved": 3
+      },
+      {
+        "task_id": "T003",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 2
+      },
+      {
+        "task_id": "T004",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 8,
+        "resolved": 0
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T005",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 6,
+        "resolved": 1
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 12,
+        "resolved": 2
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 10,
+        "resolved": 0
+      },
+      {
+        "task_id": "T006",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 9,
+        "resolved": 2
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 8,
+        "resolved": 4
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T007",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 10,
+        "resolved": 1
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 12,
+        "resolved": 1
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T008",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T009",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 10,
+        "resolved": 2
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 11,
+        "resolved": 0
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T010",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 4
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T011",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 0
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 0
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T012",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 6,
+        "resolved": 3
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 2
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T013",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 7,
+        "resolved": 0
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 10,
+        "resolved": 0
+      },
+      {
+        "task_id": "T014",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 10,
+        "resolved": 5
+      },
+      {
+        "task_id": "T015",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 0
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 8,
+        "resolved": 5
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T016",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 10,
+        "resolved": 4
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 2
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T017",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 5
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 10,
+        "resolved": 0
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 8,
+        "resolved": 2
+      },
+      {
+        "task_id": "T018",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 2
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T019",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 11,
+        "resolved": 0
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 11,
+        "resolved": 4
+      },
+      {
+        "task_id": "T020",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 9,
+        "resolved": 2
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 8,
+        "resolved": 0
+      },
+      {
+        "task_id": "T021",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 5
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 7,
+        "resolved": 0
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T022",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 5
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 7,
+        "resolved": 0
+      },
+      {
+        "task_id": "T023",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 0
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 12,
+        "resolved": 0
+      },
+      {
+        "task_id": "T024",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 7,
+        "resolved": 0
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T025",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 8,
+        "resolved": 3
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 8,
+        "resolved": 0
+      },
+      {
+        "task_id": "T026",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 2
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T027",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 9,
+        "resolved": 3
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 7,
+        "resolved": 1
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 8,
+        "resolved": 1
+      },
+      {
+        "task_id": "T028",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 9,
+        "resolved": 4
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W0_DIRECT",
+        "language": "en",
+        "total": 9,
+        "resolved": 4
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W1_CAUTIOUS",
+        "language": "en",
+        "total": 9,
+        "resolved": 1
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "en",
+        "total": 9,
+        "resolved": 0
+      },
+      {
+        "task_id": "T029",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "en",
+        "total": 8,
+        "resolved": 4
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W0_DIRECT",
+        "language": "zh",
+        "total": 11,
+        "resolved": 1
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W1_CAUTIOUS",
+        "language": "zh",
+        "total": 6,
+        "resolved": 4
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W2_RETRIEVAL_FIRST",
+        "language": "zh",
+        "total": 5,
+        "resolved": 0
+      },
+      {
+        "task_id": "T030",
+        "workflow": "W3_VERIFY_REPAIR",
+        "language": "zh",
+        "total": 9,
+        "resolved": 3
+      }
+    ]
+  },
+  "cross_model_comparison": [
+    {
+      "workflow": "W0 Direct",
+      "deepseek_rate": "64.5%",
+      "deepseek_ci": "[58.4%, 70.2%]",
+      "deepseek_n": "160/248",
+      "qwen_rate": "18.1%",
+      "qwen_ci": "[13.9%, 23.3%]",
+      "qwen_n": "47/259",
+      "gap": 46.4
+    },
+    {
+      "workflow": "W1 Cautious",
+      "deepseek_rate": "58.6%",
+      "deepseek_ci": "[52.3%, 64.7%]",
+      "deepseek_n": "139/237",
+      "qwen_rate": "15.0%",
+      "qwen_ci": "[11.1%, 19.9%]",
+      "qwen_n": "38/254",
+      "gap": 43.6
+    },
+    {
+      "workflow": "W2 Simulated Retrieval",
+      "deepseek_rate": "52.5%",
+      "deepseek_ci": "[46.2%, 58.8%]",
+      "deepseek_n": "124/236",
+      "qwen_rate": "7.7%",
+      "qwen_ci": "[5.0%, 11.5%]",
+      "qwen_n": "20/261",
+      "gap": 44.8
+    },
+    {
+      "workflow": "W3 Verify-and-Repair",
+      "deepseek_rate": "60.3%",
+      "deepseek_ci": "[53.8%, 66.4%]",
+      "deepseek_n": "138/229",
+      "qwen_rate": "25.2%",
+      "qwen_ci": "[20.2%, 30.9%]",
+      "qwen_n": "63/250",
+      "gap": 35.1
+    }
+  ],
+  "e1_estimates": {
+    "deepseek-chat": {
+      "model": "DeepSeek-chat",
+      "total": 950,
+      "resolved": 561,
+      "estimated_e1": 345,
+      "estimated_e1_rate": 36.3,
+      "uncertain": 43,
+      "resolved_rate": 59.1,
+      "note": "E1 estimated from deep sample: 85% of unresolved DOIs and 93% of no-DOI references classified as hallucinated."
+    },
+    "qwen3-14b": {
+      "model": "Qwen3-14B",
+      "total": 1024,
+      "resolved": 168,
+      "estimated_e1": 757,
+      "estimated_e1_rate": 73.9,
+      "uncertain": 98,
+      "resolved_rate": 16.4,
+      "note": "E1 estimated from deep sample: 85% of unresolved DOIs and 93% of no-DOI references classified as hallucinated."
+    }
+  }
+}

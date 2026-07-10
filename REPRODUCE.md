@@ -89,6 +89,32 @@ python code/verify_citations.py verify --input results/extracted_refs_qwen.csv -
 4. DOI resolution check
 5. Title-based fallback matching when DOI-based verification fails
 
+## 3.5 Regenerate Paper Tables and Confidence Intervals
+
+### Command
+
+```bash
+python analysis/statistical_analysis.py
+```
+
+### Outputs regenerated
+
+- [analysis/generated/paper_tables.md](analysis/generated/paper_tables.md)
+- [analysis/generated/paper_tables.json](analysis/generated/paper_tables.json)
+
+### What this stage produces
+
+- Table 1: per-workflow verification results with Wilson 95% CIs
+- Table 2: per-language resolved rates with Wilson CIs
+- Table 3: cross-model workflow comparison
+- Table 4: estimated E1 (hallucinated) rates
+- Per-session variation tables
+- E3 annotation expansion guide
+
+### Mismatch detection
+
+Compare `analysis/generated/paper_tables.md` directly against the tables in [paper_submission.md](paper_submission.md). Any mismatch indicates either a manuscript update that was not reflected in the CSV, or a manual edit to the manuscript that the automated pipeline can help catch.
+
 ## 5. What Is Not Yet Fully Reproducible From This Repo Alone
 
 The following steps are **not** fully bundled today:

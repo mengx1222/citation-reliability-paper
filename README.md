@@ -46,7 +46,13 @@ This version of the repository packages the parts that support **inspection, aud
   - [data/e3_annotation_sample.csv](data/e3_annotation_sample.csv)
 - Re-analysis utilities added in this repo:
   - [analysis/summarize_results.py](analysis/summarize_results.py)
+  - [analysis/statistical_analysis.py](analysis/statistical_analysis.py)
   - [analysis/summary_metrics.md](analysis/summary_metrics.md)
+  - [analysis/rebuild_extracted.py](analysis/rebuild_extracted.py)
+- Reconstructed extraction table for DeepSeek:
+  - [results/extracted_refs_deepseek.csv](results/extracted_refs_deepseek.csv)
+- Auto-generated paper tables with Wilson CIs:
+  - [analysis/generated/paper_tables.md](analysis/generated/paper_tables.md)
 
 ## Repository Guide
 
@@ -55,8 +61,13 @@ This version of the repository packages the parts that support **inspection, aud
 ├── analysis/
 │   ├── README.md
 │   ├── summarize_results.py
+│   ├── statistical_analysis.py
+│   ├── rebuild_extracted.py
 │   ├── summary_metrics.json
-│   └── summary_metrics.md
+│   ├── summary_metrics.md
+│   └── generated/
+│       ├── paper_tables.md
+│       └── paper_tables.json
 ├── code/
 │   ├── build_prompts.py
 │   ├── scoring_rubric.md
@@ -70,6 +81,7 @@ This version of the repository packages the parts that support **inspection, aud
 │   │   └── resolved-rate-by-workflow.svg
 │   └── methodology.md
 ├── results/
+│   ├── extracted_refs_deepseek.csv
 │   ├── extracted_refs_qwen.csv
 │   ├── qwen_output_count.txt
 │   ├── verified_refs_merged.csv
